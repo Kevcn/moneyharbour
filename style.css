@@ -1,0 +1,27 @@
+:root{--ink:#182420; --muted:#54615b; --ground:#f5f7f6; --card:#ffffff;
+  --accent:#0b6e4f; --accent-dark:#095c42; --line:#dde4e0; --good:#0b6e4f}
+*{box-sizing:border-box}
+body{margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink);
+  background:var(--ground); line-height:1.6}
+.wrap{max-width:720px; margin:0 auto; padding:32px 20px 64px}
+nav.crumb{font-size:13.5px; margin-bottom:24px}
+nav.crumb a{color:var(--accent); text-decoration:none}
+nav.crumb a:hover{text-decoration:underline}
+h1{font-size:clamp(24px,5vw,32px); line-height:1.2; margin:0 0 10px; text-wrap:balance}
+.lead{color:var(--muted); font-size:17px; margin:0 0 24px}
+h2{font-size:20px; margin:30px 0 8px}
+p, li{font-size:15.5px}
+p{margin:10px 0}
+ul,ol{padding-left:22px}
+a{color:var(--accent)}
+.card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 24px; margin:20px 0}
+.cta{display:block; background:var(--accent); color:#fff; text-decoration:none; text-align:center;
+  font-weight:600; font-size:16px; padding:13px 22px; border-radius:8px; margin:24px 0}
+.cta:hover{background:var(--accent-dark)}
+table{border-collapse:collapse; width:100%; font-size:14.5px; font-variant-numeric:tabular-nums}
+th{text-align:left; font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted);
+  padding:8px 10px; border-bottom:2px solid var(--line)}
+td{padding:8px 10px; border-bottom:1px solid var(--line)}
+.tablewrap{overflow-x:auto; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:8px 4px; margin:16px 0}
+.note{font-size:13px; color:var(--muted)}
+footer{font-size:12.5px; color:var(--muted); margin-top:36px; border-top:1px solid var(--line); padding-top:16px}
