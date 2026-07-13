@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Remortgage Savings Calculator UK — What Is Your Current Rate Costing You?</title>
+<link rel="canonical" href="https://www.moneyharbour.co.uk/remortgage/">
+<meta name="description" content="Free UK remortgage calculator. Enter your outstanding balance, current rate and a new rate to see your monthly saving and total interest saved. No sign-up needed.">
+<style>
+  :root{
+    --ink:#182420; --muted:#54615b; --ground:#f5f7f6; --card:#ffffff;
+    --accent:#0b6e4f; --accent-dark:#095c42; --line:#dde4e0; --good:#0b6e4f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink);
+    background:var(--ground); line-height:1.55}
+  .wrap{max-width:720px; margin:0 auto; padding:40px 20px 64px}
+  header h1{font-size:clamp(24px,5vw,34px); line-height:1.2; margin:0 0 10px; text-wrap:balance}
+  header p{color:var(--muted); font-size:17px; margin:0 0 28px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:24px; margin-bottom:20px}
+  label{display:block; font-size:14px; font-weight:600; margin:14px 0 4px}
+  label:first-of-type{margin-top:0}
+  .hint{font-weight:400; color:var(--muted)}
+  input[type=number]{width:100%; font-size:17px; padding:10px 12px; border:1px solid var(--line);
+    border-radius:8px; background:var(--ground); color:var(--ink)}
+  input:focus{outline:2px solid var(--accent); outline-offset:1px}
+  .row{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:520px){.row{grid-template-columns:1fr}}
+  button{font-size:16px; font-weight:600; padding:12px 22px; border:none; border-radius:8px;
+    background:var(--accent); color:#fff; cursor:pointer; margin-top:18px; width:100%}
+  button:hover{background:var(--accent-dark)}
+  #results{display:none; border-color:var(--accent)}
+  #results.show{display:block}
+  .big{font-size:clamp(28px,6vw,40px); font-weight:700; color:var(--good);
+    font-variant-numeric:tabular-nums; line-height:1.1}
+  .stat{margin-bottom:14px}
+  .stat .k{font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted)}
+  .stats{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px}
+  .stats .v{font-size:20px; font-weight:650; font-variant-numeric:tabular-nums}
+  .signup h2{font-size:20px; margin:0 0 6px}
+  .signup p{color:var(--muted); font-size:14.5px; margin:0 0 14px}
+  .signup input[type=email]{width:100%; font-size:16px; padding:11px 12px; border:1px solid var(--line);
+    border-radius:8px}
+  .fine{font-size:12.5px; color:var(--muted); margin-top:10px}
+  footer{font-size:12.5px; color:var(--muted); margin-top:28px}
+  .faq h2{font-size:18px; margin:26px 0 8px}
+  .faq p{color:var(--muted); font-size:15px}
+  .ok{color:var(--good); font-weight:600; display:none; margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>What is staying on your current mortgage rate costing you?</h1>
+  <p>Enter three numbers. See your monthly saving from remortgaging — instantly, free, no sign-up.</p>
+</header>
+
+<div class="card">
+  <div class="row">
+    <div>
+      <label for="balance">Outstanding mortgage balance <span class="hint">(£)</span></label>
+      <input type="number" id="balance" placeholder="180000" min="1000" step="1000">
+    </div>
+    <div>
+      <label for="years">Remaining term <span class="hint">(years)</span></label>
+      <input type="number" id="years" placeholder="20" min="1" max="40" step="1">
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <label for="curRate">Your current rate <span class="hint">(% APR)</span></label>
+      <input type="number" id="curRate" placeholder="6.5" min="0.1" max="20" step="0.01">
+    </div>
+    <div>
+      <label for="newRate">Rate you could switch to <span class="hint">(% APR)</span></label>
+      <input type="number" id="newRate" placeholder="4.5" min="0.1" max="20" step="0.01">
+    </div>
+  </div>
+  <button id="calc">Show my saving</button>
+</div>
+
+<div class="card" id="results" aria-live="polite">
+  <div class="stat">
+    <div class="k">Monthly saving</div>
+    <div class="big" id="monthly">£0</div>
+  </div>
+  <div class="stats">
+    <div><div class="k">Over a 2-year fix</div><div class="v" id="twoYear">£0</div></div>
+    <div><div class="k">Over a 5-year fix</div><div class="v" id="fiveYear">£0</div></div>
+    <div><div class="k">Current monthly payment</div><div class="v" id="curPay">£0</div></div>
+    <div><div class="k">New monthly payment</div><div class="v" id="newPay">£0</div></div>
+  </div>
+</div>
+
+<div class="card signup">
+  <h2>Rates move. Get told when yours is beatable.</h2>
+  <p>We're building a free alert service: tell us your current rate and we'll email you when the market average drops below it — so you remortgage at the right moment, not when your lender feels like telling you. Launching soon; leave your email to get in first.</p>
+  <form id="alertForm" method="POST">
+    <input type="hidden" name="_subject" value="Remortgage smoke-test signup">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="current_rate" id="rateField" value="">
+    <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address">
+    <button type="submit">Notify me at launch</button>
+    <div class="ok" id="okMsg">Thanks — you're on the list.</div>
+  </form>
+  <p class="fine">One email when we launch, then only rate alerts you asked for. Unsubscribe anytime. No spam, no selling your address.</p>
+</div>
+
+<div class="faq">
+  <h2>How the maths works</h2>
+  <p>Standard UK repayment-mortgage amortisation: monthly payment = P·r(1+r)ⁿ / ((1+r)ⁿ−1), where P is your balance, r the monthly rate, n the months remaining. The saving compares your current payment with the same balance and term at the new rate.</p>
+  <h2>Should I remortgage?</h2>
+  <p>If your fixed term has ended you're likely on your lender's standard variable rate, typically 2–3 percentage points above the best available deals. Remortgaging fees (arrangement, legal, valuation) usually total £1,000–£2,000 — worth it when your monthly saving repays that inside the fix.</p>
+</div>
+
+<footer>
+  This tool is for information only and is not financial advice. Figures are estimates based on the numbers you enter; your actual quote will depend on lender criteria, fees and credit checks. Consider advice from an FCA-authorised mortgage adviser before acting.
+</footer>
+</div>
+
+<script>
+  function gbp(n){ return "£" + Math.round(n).toLocaleString("en-GB"); }
+  function pay(P, annualPct, years){
+    const r = annualPct/100/12, n = years*12;
+    if (r === 0) return P/n;
+    return P * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1);
+  }
+  document.getElementById("calc").addEventListener("click", () => {
+    const P = +document.getElementById("balance").value;
+    const y = +document.getElementById("years").value;
+    const c = +document.getElementById("curRate").value;
+    const nw = +document.getElementById("newRate").value;
+    if (!P || !y || !c || !nw) return;
+    const cur = pay(P, c, y), neu = pay(P, nw, y), d = cur - neu;
+    document.getElementById("monthly").textContent = gbp(d) + "/mo";
+    document.getElementById("twoYear").textContent = gbp(d*24);
+    document.getElementById("fiveYear").textContent = gbp(d*60);
+    document.getElementById("curPay").textContent = gbp(cur);
+    document.getElementById("newPay").textContent = gbp(neu);
+    document.getElementById("rateField").value = c + "%";
+    document.getElementById("results").classList.add("show");
+  });
+  // form endpoint assembled at runtime to keep the address out of static source
+  const form = document.getElementById("alertForm");
+  const dest = ["liyq1122", "gmail.com"].join("@");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      await fetch("https://formsubmit.co/ajax/" + dest, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: data
+      });
+      document.getElementById("okMsg").style.display = "block";
+      form.querySelector("input[type=email]").value = "";
+    } catch (err) {
+      document.getElementById("okMsg").textContent = "Something went wrong — please try again.";
+      document.getElementById("okMsg").style.display = "block";
+    }
+  });
+</script>
+<script data-goatcounter="https://remortgage-uk.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
