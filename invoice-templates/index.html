@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free UK Invoice Template &amp; Invoice Generator — Word, Excel, PDF | Money Harbour</title>
+<link rel="canonical" href="https://www.moneyharbour.co.uk/invoice-templates/">
+<meta name="description" content="Free UK invoice template downloads (Word, Excel, PDF) plus a free online invoice generator — fill in your details, add line items with optional VAT, and print or save as PDF. No sign-up.">
+<style>
+  :root{
+    --ink:#182420; --muted:#54615b; --ground:#f5f7f6; --card:#ffffff;
+    --accent:#0b6e4f; --accent-dark:#095c42; --line:#dde4e0; --good:#0b6e4f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink);
+    background:var(--ground); line-height:1.55}
+  .wrap{max-width:960px; margin:0 auto; padding:32px 20px 64px}
+  nav.crumb{font-size:13.5px; margin-bottom:20px}
+  nav.crumb a{color:var(--accent); text-decoration:none}
+  header h1{font-size:clamp(24px,5vw,34px); line-height:1.2; margin:0 0 10px; text-wrap:balance}
+  header p{color:var(--muted); font-size:17px; margin:0 0 24px; max-width:720px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:24px; margin-bottom:20px}
+  .downloads{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-bottom:26px}
+  a.dl{display:block; background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:18px 20px; text-decoration:none; color:var(--ink)}
+  a.dl:hover{border-color:var(--accent)}
+  a.dl strong{display:block; color:var(--accent); font-size:16px; margin-bottom:3px}
+  a.dl span{color:var(--muted); font-size:13.5px}
+  h2{font-size:21px; margin:6px 0 10px}
+  label{display:block; font-size:13px; font-weight:600; margin:10px 0 3px}
+  input[type=text], input[type=date], input[type=number], textarea{width:100%; font-size:15px; padding:8px 10px;
+    border:1px solid var(--line); border-radius:8px; background:var(--ground); color:var(--ink); font-family:inherit}
+  input:focus, textarea:focus{outline:2px solid var(--accent); outline-offset:1px}
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+  @media(max-width:760px){.cols{grid-template-columns:1fr}}
+  .items-table{width:100%; border-collapse:collapse; margin-top:8px}
+  .items-table th{text-align:left; font-size:11.5px; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--muted); padding:4px 6px 4px 0}
+  .items-table td{padding:3px 6px 3px 0; vertical-align:top}
+  .items-table input{font-size:14px; padding:7px 8px}
+  .del{background:none; border:none; color:var(--muted); font-size:18px; cursor:pointer; padding:6px 4px; width:auto; margin:0}
+  .del:hover{color:#b00020; background:none}
+  button{font-size:15px; font-weight:600; padding:11px 18px; border:none; border-radius:8px;
+    background:var(--accent); color:#fff; cursor:pointer}
+  button:hover{background:var(--accent-dark)}
+  button.ghost{background:var(--ground); color:var(--accent); border:1px solid var(--accent); margin-top:8px}
+  button.ghost:hover{background:#e8f0ec}
+  .toolbar{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
+  .vat-row{display:flex; align-items:center; gap:8px; margin-top:12px; font-size:14px}
+  .vat-row input{width:auto}
+  /* invoice preview */
+  #invoice{background:#fff; border:1px solid var(--line); border-radius:12px; padding:28px;
+    font-size:13.5px; min-height:400px}
+  #invoice .inv-head{color:var(--accent); font-size:26px; font-weight:800; letter-spacing:.02em; margin-bottom:14px}
+  #invoice .grid2{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+  #invoice .meta{font-variant-numeric:tabular-nums}
+  #invoice .meta b{display:inline-block; min-width:86px}
+  #invoice h3{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:16px 0 4px}
+  #invoice table{width:100%; border-collapse:collapse; margin-top:6px; font-variant-numeric:tabular-nums}
+  #invoice th{text-align:left; background:var(--accent); color:#fff; padding:6px 8px; font-size:12px}
+  #invoice th.num, #invoice td.num{text-align:right}
+  #invoice td{padding:6px 8px; border-bottom:1px solid var(--line)}
+  #invoice .totals{margin-top:10px; margin-left:auto; max-width:260px}
+  #invoice .totals div{display:flex; justify-content:space-between; padding:3px 0}
+  #invoice .totals .grand{font-weight:700; color:var(--accent); font-size:16px; border-top:2px solid var(--accent); padding-top:6px; margin-top:4px}
+  #invoice .pay{margin-top:16px; white-space:pre-line}
+  .signup h2{font-size:20px; margin:0 0 6px}
+  .signup p{color:var(--muted); font-size:14.5px; margin:0 0 14px}
+  .signup input[type=email]{width:100%; font-size:16px; padding:11px 12px; border:1px solid var(--line); border-radius:8px}
+  .signup button{width:100%; margin-top:10px}
+  .ok{color:var(--good); font-weight:600; display:none; margin-top:10px}
+  .fine{font-size:12.5px; color:var(--muted); margin-top:10px}
+  .faq h2{font-size:18px; margin:26px 0 8px}
+  .faq p, .faq li{color:var(--muted); font-size:15px}
+  .guides a{color:var(--accent)}
+  footer{font-size:12.5px; color:var(--muted); margin-top:28px}
+  @media print{
+    body{background:#fff}
+    body *{visibility:hidden}
+    #invoice, #invoice *{visibility:visible}
+    #invoice{position:absolute; left:0; top:0; width:100%; border:none; border-radius:0; padding:0}
+  }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Free UK Invoice Generator","url":"https://www.moneyharbour.co.uk/invoice-templates/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Free online invoice generator for UK sole traders and small businesses. Fill in your details, add line items with optional VAT, print or save as PDF. Free Word, Excel and PDF invoice templates included."}
+</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="crumb"><a href="/">Money Harbour</a> › Invoice templates</nav>
+<header>
+  <h1>Free UK invoice template — download it, or fill one in right here</h1>
+  <p>Grab a blank invoice template for Word, Excel or PDF, or use the free generator below: type your details, add your line items, toggle VAT, then print or save as PDF. No sign-up, no watermark, no upsell.</p>
+</header>
+
+<div class="downloads">
+  <a class="dl" href="/invoice-templates/files/invoice-template-uk.docx" data-goatcounter-click="dl-docx">
+    <strong>Word template (.docx)</strong><span>Editable in Word, Google Docs and Pages. Download free.</span>
+  </a>
+  <a class="dl" href="/invoice-templates/files/invoice-template-uk.xlsx" data-goatcounter-click="dl-xlsx">
+    <strong>Excel template (.xlsx)</strong><span>Totals and VAT calculated by formula. Download free.</span>
+  </a>
+  <a class="dl" href="/invoice-templates/files/invoice-template-uk.pdf" data-goatcounter-click="dl-pdf">
+    <strong>PDF template</strong><span>Print-ready blank invoice. Download free.</span>
+  </a>
+</div>
+
+<h2 id="generator">Free invoice generator</h2>
+<div class="cols">
+  <div class="card">
+    <label for="bizName">Your business / trading name</label>
+    <input type="text" id="bizName" placeholder="Jane Smith Plumbing">
+    <label for="bizAddr">Your address &amp; contact details</label>
+    <textarea id="bizAddr" rows="3" placeholder="12 Harbour Lane&#10;Bristol BS1 4ST&#10;jane@example.com · 07700 900123"></textarea>
+    <div class="cols" style="gap:12px">
+      <div>
+        <label for="invNo">Invoice number</label>
+        <input type="text" id="invNo" placeholder="0001">
+      </div>
+      <div>
+        <label for="invDate">Invoice date</label>
+        <input type="date" id="invDate">
+      </div>
+    </div>
+    <label for="dueDate">Payment due date</label>
+    <input type="date" id="dueDate">
+    <label for="clientAddr">Bill to (client name &amp; address)</label>
+    <textarea id="clientAddr" rows="3" placeholder="Acme Ltd&#10;1 High Street&#10;London EC1A 1AA"></textarea>
+
+    <table class="items-table" id="itemsTable">
+      <thead><tr><th>Description</th><th style="width:52px">Qty</th><th style="width:84px">Unit £</th><th style="width:30px"></th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <button class="ghost" type="button" id="addRow">+ Add line item</button>
+
+    <div class="vat-row">
+      <input type="checkbox" id="vatOn">
+      <label for="vatOn" style="margin:0; font-weight:400">Add VAT at 20% (VAT-registered businesses only)</label>
+    </div>
+    <label for="payDetails">Payment details &amp; terms</label>
+    <textarea id="payDetails" rows="3" placeholder="Bank: Example Bank · Account name: Jane Smith&#10;Sort code: 00-00-00 · Account: 00000000&#10;Payment due within 14 days. Reference: invoice number."></textarea>
+    <div class="toolbar">
+      <button type="button" onclick="window.print()" data-goatcounter-click="print-invoice">Print / save as PDF</button>
+    </div>
+  </div>
+
+  <div>
+    <div id="invoice" aria-live="polite">
+      <div class="inv-head">INVOICE</div>
+      <div class="grid2">
+        <div id="pBiz" style="white-space:pre-line"><b>Your business name</b></div>
+        <div class="meta">
+          <div><b>Invoice no.</b> <span id="pNo">—</span></div>
+          <div><b>Date</b> <span id="pDate">—</span></div>
+          <div><b>Due</b> <span id="pDue">—</span></div>
+        </div>
+      </div>
+      <h3>Bill to</h3>
+      <div id="pClient" style="white-space:pre-line">—</div>
+      <table>
+        <thead><tr><th>Description</th><th class="num">Qty</th><th class="num">Unit £</th><th class="num">Amount £</th></tr></thead>
+        <tbody id="pItems"></tbody>
+      </table>
+      <div class="totals">
+        <div><span>Subtotal</span><span id="pSub">£0.00</span></div>
+        <div id="pVatRow" style="display:none"><span>VAT (20%)</span><span id="pVat">£0.00</span></div>
+        <div class="grand"><span>Total due</span><span id="pTotal">£0.00</span></div>
+      </div>
+      <h3>Payment details</h3>
+      <div class="pay" id="pPay">—</div>
+    </div>
+    <p class="fine">The preview is exactly what prints. Use your browser's "Save as PDF" in the print dialog to get a PDF invoice.</p>
+  </div>
+</div>
+
+<div class="card signup">
+  <h2>Sick of renumbering invoices by hand?</h2>
+  <p>We're building a free invoicing tool that remembers your business details and clients, auto-numbers each invoice, and tells you which ones are still unpaid. Launching soon — leave your email and you'll get it first.</p>
+  <form id="alertForm" method="POST">
+    <input type="hidden" name="_subject" value="Invoice smoke-test signup">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address">
+    <button type="submit">Notify me at launch</button>
+    <div class="ok" id="okMsg">Thanks — you're on the list.</div>
+  </form>
+  <p class="fine">One email when we launch. Unsubscribe anytime. No spam, no selling your address.</p>
+</div>
+
+<div class="faq">
+  <h2>What a UK invoice must include</h2>
+  <ul>
+    <li>The word "invoice" and a unique, sequential invoice number</li>
+    <li>Your business name, address and contact details (and company number + registered office if you're a limited company)</li>
+    <li>The client's name and address</li>
+    <li>Invoice date, a clear description of goods or services, and the amount(s) charged</li>
+    <li>If you're VAT-registered: your VAT number, the VAT rate and the VAT amount shown separately, and the tax point (supply date) if it differs from the invoice date</li>
+  </ul>
+  <h2>Do I need to charge VAT?</h2>
+  <p>Only if you're VAT-registered. Registration is compulsory once your taxable turnover passes the HMRC threshold (£90,000 as of 2024) — below that it's optional. If you're not registered, don't add VAT and don't show a VAT line at all.</p>
+  <h2>Sole trader vs limited company invoices</h2>
+  <p>A sole trader invoices under their own name (or trading name) — see the <a href="/invoice-templates/self-employed/">self-employed invoice template</a>. A limited company must also show its full registered name, company number and registered office address.</p>
+</div>
+
+<div class="faq guides">
+  <h2>Templates by format</h2>
+  <p>
+    <a href="/invoice-templates/word/">Invoice template for Word</a> ·
+    <a href="/invoice-templates/excel/">Invoice template for Excel (auto-totals)</a> ·
+    <a href="/invoice-templates/pdf/">PDF invoice template</a> ·
+    <a href="/invoice-templates/self-employed/">Self-employed / sole trader invoice template</a>
+  </p>
+</div>
+
+<footer>
+  Money Harbour is an independent UK site. This page is general information, not tax or legal advice — check current HMRC guidance for VAT and invoicing rules. <a href="/">More free tools</a>.
+</footer>
+</div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const gbp = n => "£" + (Math.round(n * 100) / 100).toLocaleString("en-GB", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtDate = v => {
+    if (!v) return "—";
+    const [y, m, d] = v.split("-");
+    return d + "/" + m + "/" + y;
+  };
+  const tbody = $("itemsTable").querySelector("tbody");
+
+  function addRow(desc, qty, unit){
+    const tr = document.createElement("tr");
+    tr.innerHTML = '<td><input type="text" class="i-desc" placeholder="Work carried out"></td>' +
+      '<td><input type="number" class="i-qty" min="0" step="any" placeholder="1"></td>' +
+      '<td><input type="number" class="i-unit" min="0" step="0.01" placeholder="0.00"></td>' +
+      '<td><button type="button" class="del" aria-label="Remove line">×</button></td>';
+    tr.querySelector(".i-desc").value = desc || "";
+    if (qty) tr.querySelector(".i-qty").value = qty;
+    if (unit) tr.querySelector(".i-unit").value = unit;
+    tr.querySelector(".del").addEventListener("click", () => { tr.remove(); render(); });
+    tbody.appendChild(tr);
+  }
+
+  function render(){
+    $("pBiz").innerHTML = "";
+    const bizName = document.createElement("b");
+    bizName.textContent = $("bizName").value || "Your business name";
+    $("pBiz").appendChild(bizName);
+    if ($("bizAddr").value) $("pBiz").appendChild(document.createTextNode("\n" + $("bizAddr").value));
+    $("pNo").textContent = $("invNo").value || "—";
+    $("pDate").textContent = fmtDate($("invDate").value);
+    $("pDue").textContent = fmtDate($("dueDate").value);
+    $("pClient").textContent = $("clientAddr").value || "—";
+    $("pPay").textContent = $("payDetails").value || "—";
+
+    const items = $("pItems");
+    items.innerHTML = "";
+    let sub = 0;
+    tbody.querySelectorAll("tr").forEach(tr => {
+      const desc = tr.querySelector(".i-desc").value;
+      const qty = parseFloat(tr.querySelector(".i-qty").value) || 0;
+      const unit = parseFloat(tr.querySelector(".i-unit").value) || 0;
+      if (!desc && !qty && !unit) return;
+      const amt = qty * unit;
+      sub += amt;
+      const row = document.createElement("tr");
+      ["", "num", "num", "num"].forEach((cls, i) => {
+        const td = document.createElement("td");
+        if (cls) td.className = cls;
+        td.textContent = [desc || "—", qty || "", unit ? gbp(unit).slice(1) : "", amt ? gbp(amt).slice(1) : "0.00"][i];
+        row.appendChild(td);
+      });
+      items.appendChild(row);
+    });
+    const vatOn = $("vatOn").checked;
+    const vat = vatOn ? sub * 0.2 : 0;
+    $("pSub").textContent = gbp(sub);
+    $("pVatRow").style.display = vatOn ? "flex" : "none";
+    $("pVat").textContent = gbp(vat);
+    $("pTotal").textContent = gbp(sub + vat);
+  }
+
+  addRow(); addRow();
+  document.addEventListener("input", render);
+  document.addEventListener("change", render);
+  $("addRow").addEventListener("click", () => { addRow(); render(); });
+  render();
+
+  // form endpoint assembled at runtime to keep the address out of static source
+  const form = $("alertForm");
+  const dest = ["liyq1122", "gmail.com"].join("@");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      await fetch("https://formsubmit.co/ajax/" + dest, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: data
+      });
+      $("okMsg").style.display = "block";
+      form.querySelector("input[type=email]").value = "";
+    } catch (err) {
+      $("okMsg").textContent = "Something went wrong — please try again.";
+      $("okMsg").style.display = "block";
+    }
+  });
+})();
+</script>
+<script data-goatcounter="https://kevinli.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

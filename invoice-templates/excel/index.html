@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invoice Template for Excel (UK) — Free .xlsx with Auto-Totals &amp; VAT</title>
+<link rel="canonical" href="https://www.moneyharbour.co.uk/invoice-templates/excel/">
+<meta name="description" content="Free UK invoice template for Excel (.xlsx). Line amounts, subtotal, 20% VAT and total due all calculated by formula — type quantity and price, the sheet does the rest.">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Does the Excel invoice template calculate VAT automatically?","acceptedAnswer":{"@type":"Answer","text":"Yes — the VAT cell is =subtotal×0.2. If you're not VAT-registered, set that formula to 0 (or delete the row); you must not charge VAT."}},
+{"@type":"Question","name":"Does it work in Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Yes. Upload the .xlsx to Google Drive and open with Google Sheets — the SUM and multiplication formulas are standard and carry over unchanged."}},
+{"@type":"Question","name":"How do I send an Excel invoice to a client?","acceptedAnswer":{"@type":"Answer","text":"Export it to PDF first (File → Export → Create PDF) so the client sees a fixed document and can't change the figures. Keep the .xlsx as your working copy."}}]}
+</script>
+</head>
+<body>
+<div class="wrap">
+<nav class="crumb"><a href="/">Money Harbour</a> › <a href="/invoice-templates/">Invoice templates</a> › Excel</nav>
+
+<h1>Invoice template for Excel — totals and VAT by formula</h1>
+<p class="lead">Type a quantity and a unit price; the sheet fills in the line amount, subtotal, 20% VAT and total due. Free .xlsx, no sign-up, opens in Excel and Google Sheets.</p>
+
+<a class="cta" href="/invoice-templates/files/invoice-template-uk.xlsx" data-goatcounter-click="dl-xlsx-page">Download the Excel template (.xlsx)</a>
+
+<h2>What the formulas do</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Cell</th><th>Formula</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Amount (each line)</td><td>=Qty × Unit price</td><td>Blank until you enter a quantity</td></tr>
+<tr><td>Subtotal</td><td>=SUM(line amounts)</td><td>All eight item rows, empty rows count as zero</td></tr>
+<tr><td>VAT</td><td>=Subtotal × 0.2</td><td>Set to 0 or delete the row if you're not VAT-registered</td></tr>
+<tr><td>Total due</td><td>=Subtotal + VAT</td><td>Formatted as £, shown bold</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>How to use it</h2>
+<ol>
+  <li>Replace the <strong>[square-bracket placeholders]</strong> with your business, client and bank details.</li>
+  <li>Enter description, quantity and unit price per row — amounts and totals update themselves.</li>
+  <li>Not VAT-registered? Change the VAT cell to <code>0</code>. Don't charge VAT you can't charge.</li>
+  <li>Export to PDF before sending so the client can't edit the figures; keep the .xlsx as your record.</li>
+</ol>
+
+<h2>When Excel is the right format</h2>
+<p>Excel earns its keep when invoices have several line items or you want a running file per client. For a one-line invoice the <a href="/invoice-templates/word/">Word template</a> is quicker to edit, and the <a href="/invoice-templates/">free online generator</a> needs no software at all — fill it in, print or save as PDF.</p>
+
+<p><a href="/invoice-templates/self-employed/">Self-employed / sole trader version →</a> · <a href="/invoice-templates/pdf/">PDF template →</a></p>
+
+<footer>Money Harbour is an independent UK site. General information, not tax advice — check current HMRC guidance for invoicing and VAT rules.</footer>
+</div>
+<script data-goatcounter="https://kevinli.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
