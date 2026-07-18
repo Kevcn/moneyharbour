@@ -6,30 +6,26 @@
 <title>Free UK Invoice Template &amp; Invoice Generator — Word, Excel, PDF | Money Harbour</title>
 <link rel="canonical" href="https://www.moneyharbour.co.uk/invoice-templates/">
 <meta name="description" content="Free UK invoice template downloads (Word, Excel, PDF) plus a free online invoice generator — fill in your details, add line items with optional VAT, and print or save as PDF. No sign-up.">
+<link rel="preload" href="/assets/fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#0e3b2c">
+<link rel="stylesheet" href="/style.css">
 <style>
-  :root{
-    --ink:#182420; --muted:#54615b; --ground:#f5f7f6; --card:#ffffff;
-    --accent:#0b6e4f; --accent-dark:#095c42; --line:#dde4e0; --good:#0b6e4f;
-  }
-  *{box-sizing:border-box}
-  body{margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink);
-    background:var(--ground); line-height:1.55}
-  .wrap{max-width:960px; margin:0 auto; padding:32px 20px 64px}
-  nav.crumb{font-size:13.5px; margin-bottom:20px}
-  nav.crumb a{color:var(--accent); text-decoration:none}
-  header h1{font-size:clamp(24px,5vw,34px); line-height:1.2; margin:0 0 10px; text-wrap:balance}
-  header p{color:var(--muted); font-size:17px; margin:0 0 24px; max-width:720px}
-  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:24px; margin-bottom:20px}
-  .downloads{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-bottom:26px}
-  a.dl{display:block; background:var(--card); border:1px solid var(--line); border-radius:12px;
-    padding:18px 20px; text-decoration:none; color:var(--ink)}
-  a.dl:hover{border-color:var(--accent)}
-  a.dl strong{display:block; color:var(--accent); font-size:16px; margin-bottom:3px}
+  .wrap{max-width:960px}
+  header.page h1{margin-top:16px}
+  header.page p{color:var(--muted); font-size:17.5px; margin:0 0 24px; max-width:720px}
+  .card{margin:0 0 20px}
+  .downloads{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-bottom:30px}
+  a.dl{display:block; background:var(--card); border:1px solid var(--line); border-top:3px solid var(--accent);
+    border-radius:8px; padding:16px 18px; text-decoration:none; color:var(--ink)}
+  a.dl:hover{border-color:var(--accent); border-top-color:var(--accent)}
+  a.dl strong{display:block; font-family:var(--serif); font-weight:600; color:var(--ink); font-size:16.5px; margin-bottom:3px}
+  a.dl:hover strong{color:var(--accent)}
   a.dl span{color:var(--muted); font-size:13.5px}
-  h2{font-size:21px; margin:6px 0 10px}
+  h2{margin:6px 0 10px}
   label{display:block; font-size:13px; font-weight:600; margin:10px 0 3px}
   input[type=text], input[type=date], input[type=number], textarea{width:100%; font-size:15px; padding:8px 10px;
-    border:1px solid var(--line); border-radius:8px; background:var(--ground); color:var(--ink); font-family:inherit}
+    border:1px solid var(--line); border-radius:6px; background:var(--ground); color:var(--ink); font-family:inherit}
   input:focus, textarea:focus{outline:2px solid var(--accent); outline-offset:1px}
   .cols{display:grid; grid-template-columns:1fr 1fr; gap:20px}
   @media(max-width:760px){.cols{grid-template-columns:1fr}}
@@ -40,18 +36,18 @@
   .items-table input{font-size:14px; padding:7px 8px}
   .del{background:none; border:none; color:var(--muted); font-size:18px; cursor:pointer; padding:6px 4px; width:auto; margin:0}
   .del:hover{color:#b00020; background:none}
-  button{font-size:15px; font-weight:600; padding:11px 18px; border:none; border-radius:8px;
+  button{font-size:15px; font-weight:600; padding:11px 18px; border:none; border-radius:6px;
     background:var(--accent); color:#fff; cursor:pointer}
   button:hover{background:var(--accent-dark)}
   button.ghost{background:var(--ground); color:var(--accent); border:1px solid var(--accent); margin-top:8px}
-  button.ghost:hover{background:#e8f0ec}
+  button.ghost:hover{background:var(--wash)}
   .toolbar{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
   .vat-row{display:flex; align-items:center; gap:8px; margin-top:12px; font-size:14px}
   .vat-row input{width:auto}
   /* invoice preview */
-  #invoice{background:#fff; border:1px solid var(--line); border-radius:12px; padding:28px;
+  #invoice{background:#fff; border:1px solid var(--line); border-radius:10px; padding:28px;
     font-size:13.5px; min-height:400px}
-  #invoice .inv-head{color:var(--accent); font-size:26px; font-weight:800; letter-spacing:.02em; margin-bottom:14px}
+  #invoice .inv-head{font-family:var(--serif); color:var(--accent); font-size:26px; font-weight:600; letter-spacing:.02em; margin-bottom:14px}
   #invoice .grid2{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
   #invoice .meta{font-variant-numeric:tabular-nums}
   #invoice .meta b{display:inline-block; min-width:86px}
@@ -64,16 +60,16 @@
   #invoice .totals div{display:flex; justify-content:space-between; padding:3px 0}
   #invoice .totals .grand{font-weight:700; color:var(--accent); font-size:16px; border-top:2px solid var(--accent); padding-top:6px; margin-top:4px}
   #invoice .pay{margin-top:16px; white-space:pre-line}
+  .signup{background:var(--wash); max-width:560px}
   .signup h2{font-size:20px; margin:0 0 6px}
   .signup p{color:var(--muted); font-size:14.5px; margin:0 0 14px}
-  .signup input[type=email]{width:100%; font-size:16px; padding:11px 12px; border:1px solid var(--line); border-radius:8px}
+  .signup input[type=email]{width:100%; font-size:16px; padding:11px 12px; border:1px solid var(--line); border-radius:6px; background:#fff}
   .signup button{width:100%; margin-top:10px}
   .ok{color:var(--good); font-weight:600; display:none; margin-top:10px}
   .fine{font-size:12.5px; color:var(--muted); margin-top:10px}
-  .faq h2{font-size:18px; margin:26px 0 8px}
+  .faq h2{font-size:19px; margin:28px 0 8px}
   .faq p, .faq li{color:var(--muted); font-size:15px}
   .guides a{color:var(--accent)}
-  footer{font-size:12.5px; color:var(--muted); margin-top:28px}
   @media print{
     body{background:#fff}
     body *{visibility:hidden}
@@ -87,8 +83,9 @@
 </head>
 <body>
 <div class="wrap">
+<header class="mast"><a class="mast-brand" href="/">Money <span>Harbour</span></a><span class="mast-tag">Independent UK money tools</span></header>
 <nav class="crumb"><a href="/">Money Harbour</a> › Invoice templates</nav>
-<header>
+<header class="page">
   <h1>Free UK invoice template — download it, or fill one in right here</h1>
   <p>Grab a blank invoice template for Word, Excel or PDF, or use the free generator below: type your details, add your line items, toggle VAT, then print or save as PDF. No sign-up, no watermark, no upsell.</p>
 </header>

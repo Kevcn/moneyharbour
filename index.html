@@ -6,23 +6,29 @@
 <title>Money Harbour — Simple UK Money Tools</title>
 <meta name="description" content="Free, no-nonsense UK money calculators and tools. No sign-up, no jargon.">
 <link rel="canonical" href="https://www.moneyharbour.co.uk/">
+<link rel="preload" href="/assets/fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#0e3b2c">
+<link rel="stylesheet" href="/style.css">
 <style>
-  :root{--ink:#182420; --muted:#54615b; --ground:#f5f7f6; --card:#fff; --accent:#0b6e4f; --line:#dde4e0}
-  *{box-sizing:border-box}
-  body{margin:0; font-family:system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink);
-    background:var(--ground); line-height:1.55}
-  .wrap{max-width:680px; margin:0 auto; padding:56px 20px 64px}
-  h1{font-size:clamp(26px,5vw,36px); margin:0 0 8px}
+  .wrap{padding-top:52px}
+  h1{font-size:clamp(38px,8vw,58px); margin:0 0 6px; border-bottom:4px double var(--ink); padding-bottom:18px}
   h1 span{color:var(--accent)}
-  .sub{color:var(--muted); font-size:17px; margin:0 0 36px}
-  a.tool{display:block; background:var(--card); border:1px solid var(--line); border-radius:12px;
-    padding:22px 24px; text-decoration:none; color:var(--ink); margin-bottom:14px}
-  a.tool:hover{border-color:var(--accent)}
-  a.tool h2{font-size:19px; margin:0 0 4px; color:var(--accent)}
-  a.tool p{margin:0; color:var(--muted); font-size:14.5px}
-  .soon{opacity:.55}
-  .soon h2{color:var(--muted)}
-  footer{font-size:12.5px; color:var(--muted); margin-top:40px}
+  .sub{color:var(--muted); font-size:17.5px; margin:14px 0 34px; max-width:560px}
+  a.feat{display:block; background:var(--deep); color:var(--cream); border-radius:10px;
+    padding:26px 28px; text-decoration:none; margin:0 0 34px}
+  a.feat h2{color:#fff; margin:0 0 6px; font-size:24px}
+  a.feat p{color:#c8d8cf; margin:0 0 14px; font-size:15.5px}
+  a.feat .go{color:var(--cream); font-weight:600; font-size:14.5px; letter-spacing:.01em}
+  a.feat:hover .go{text-decoration:underline}
+  .tools{border-top:1px solid var(--line)}
+  a.row{display:block; padding:18px 2px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink)}
+  a.row h2{font-size:19px; margin:0 0 3px; color:var(--accent)}
+  a.row:hover h2{text-decoration:underline}
+  a.row p{margin:0; color:var(--muted); font-size:14.5px}
+  .soon{padding:18px 2px; border-bottom:1px solid var(--line)}
+  .soon h2{font-size:19px; margin:0 0 3px; color:var(--muted)}
+  .soon p{margin:0; color:var(--muted); font-size:14.5px}
 </style>
 </head>
 <body>
@@ -30,25 +36,29 @@
   <h1>Money <span>Harbour</span></h1>
   <p class="sub">Simple, free UK money tools. No sign-up, no jargon, no upsell mid-calculation.</p>
 
-  <a class="tool" href="/remortgage/">
+  <a class="feat" href="/remortgage/">
     <h2>Remortgage Savings Calculator</h2>
     <p>What is staying on your current rate costing you each month? Three numbers, instant answer.</p>
+    <span class="go">Open the calculator →</span>
   </a>
-  <a class="tool" href="/remortgage/svr-rates/">
-    <h2>UK SVR Rates — the cost of doing nothing</h2>
-    <p>Current standard variable rates by lender, and what each one costs per month against a new fix.</p>
-  </a>
-  <a class="tool" href="/remortgage/should-i-remortgage/">
-    <h2>Should I remortgage? Decision guide</h2>
-    <p>When switching pays, when it doesn't, and the six-month window most people miss.</p>
-  </a>
-  <a class="tool" href="/invoice-templates/">
-    <h2>Free Invoice Templates &amp; Generator</h2>
-    <p>UK invoice templates for Word, Excel and PDF, plus a free online generator — fill in, add VAT, save as PDF.</p>
-  </a>
-  <div class="tool soon">
-    <h2>More tools on the way</h2>
-    <p>We add one small tool at a time and only keep the ones people actually use.</p>
+
+  <div class="tools">
+    <a class="row" href="/invoice-templates/">
+      <h2>Free Invoice Templates &amp; Generator</h2>
+      <p>UK invoice templates for Word, Excel and PDF, plus a free online generator — fill in, add VAT, save as PDF.</p>
+    </a>
+    <a class="row" href="/remortgage/svr-rates/">
+      <h2>UK SVR Rates — the cost of doing nothing</h2>
+      <p>Current standard variable rates by lender, and what each one costs per month against a new fix.</p>
+    </a>
+    <a class="row" href="/remortgage/should-i-remortgage/">
+      <h2>Should I remortgage? Decision guide</h2>
+      <p>When switching pays, when it doesn't, and the six-month window most people miss.</p>
+    </a>
+    <div class="soon">
+      <h2>More tools on the way</h2>
+      <p>We add one small tool at a time and only keep the ones people actually use.</p>
+    </div>
   </div>
 
   <footer>Money Harbour is an independent site. Tools are for information only and are not financial advice.</footer>
