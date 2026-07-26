@@ -8,108 +8,45 @@
 <meta name="description" content="Free UK invoice template downloads (Word, Excel, PDF) plus a free online invoice generator — fill in your details, add line items with optional VAT, and print or save as PDF. No sign-up.">
 <link rel="preload" href="/assets/fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-<meta name="theme-color" content="#0e3b2c">
+<link rel="icon" href="/assets/harbour-mark.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0d3b2e">
 <link rel="stylesheet" href="/style.css">
 <style>
-  .wrap{max-width:960px}
-  header.page h1{margin-top:16px}
-  header.page p{color:var(--muted); font-size:17.5px; margin:0 0 24px; max-width:720px}
-  .card{margin:0 0 20px}
-  .downloads{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin-bottom:30px}
-  a.dl{display:block; background:var(--card); border:1px solid var(--line); border-top:3px solid var(--accent);
-    border-radius:8px; padding:16px 18px; text-decoration:none; color:var(--ink)}
-  a.dl:hover{border-color:var(--accent); border-top-color:var(--accent)}
-  a.dl strong{display:block; font-family:var(--serif); font-weight:600; color:var(--ink); font-size:16.5px; margin-bottom:3px}
-  a.dl:hover strong{color:var(--accent)}
-  a.dl span{color:var(--muted); font-size:13.5px}
-  h2{margin:6px 0 10px}
-  label{display:block; font-size:13px; font-weight:600; margin:10px 0 3px}
-  input[type=text], input[type=date], input[type=number], textarea{width:100%; font-size:15px; padding:8px 10px;
-    border:1px solid var(--line); border-radius:6px; background:var(--ground); color:var(--ink); font-family:inherit}
-  input:focus, textarea:focus{outline:2px solid var(--accent); outline-offset:1px}
-  .cols{display:grid; grid-template-columns:1fr 1fr; gap:20px}
-  @media(max-width:760px){.cols{grid-template-columns:1fr}}
-  .items-table{width:100%; border-collapse:collapse; margin-top:8px}
-  .items-table th{text-align:left; font-size:11.5px; text-transform:uppercase; letter-spacing:.05em;
-    color:var(--muted); padding:4px 6px 4px 0}
-  .items-table td{padding:3px 6px 3px 0; vertical-align:top}
-  .items-table input{font-size:14px; padding:7px 8px}
-  .del{background:none; border:none; color:var(--muted); font-size:18px; cursor:pointer; padding:6px 4px; width:auto; margin:0}
-  .del:hover{color:#b00020; background:none}
-  button{font-size:15px; font-weight:600; padding:11px 18px; border:none; border-radius:6px;
-    background:var(--accent); color:#fff; cursor:pointer}
-  button:hover{background:var(--accent-dark)}
-  button.ghost{background:var(--ground); color:var(--accent); border:1px solid var(--accent); margin-top:8px}
-  button.ghost:hover{background:var(--wash)}
-  .toolbar{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
-  .vat-row{display:flex; align-items:center; gap:8px; margin-top:12px; font-size:14px}
-  .vat-row input{width:auto}
-  /* invoice preview */
-  #invoice{background:#fff; border:1px solid var(--line); border-radius:10px; padding:28px;
-    font-size:13.5px; min-height:400px}
-  #invoice .inv-head{font-family:var(--serif); color:var(--accent); font-size:26px; font-weight:600; letter-spacing:.02em; margin-bottom:14px}
-  #invoice .grid2{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
-  #invoice .meta{font-variant-numeric:tabular-nums}
-  #invoice .meta b{display:inline-block; min-width:86px}
-  #invoice h3{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:16px 0 4px}
-  #invoice table{width:100%; border-collapse:collapse; margin-top:6px; font-variant-numeric:tabular-nums}
-  #invoice th{text-align:left; background:var(--accent); color:#fff; padding:6px 8px; font-size:12px}
-  #invoice th.num, #invoice td.num{text-align:right}
-  #invoice td{padding:6px 8px; border-bottom:1px solid var(--line)}
-  #invoice .totals{margin-top:10px; margin-left:auto; max-width:260px}
-  #invoice .totals div{display:flex; justify-content:space-between; padding:3px 0}
-  #invoice .totals .grand{font-weight:700; color:var(--accent); font-size:16px; border-top:2px solid var(--accent); padding-top:6px; margin-top:4px}
-  #invoice .pay{margin-top:16px; white-space:pre-line}
-  .signup{background:var(--wash); max-width:560px}
-  .signup h2{font-size:20px; margin:0 0 6px}
-  .signup p{color:var(--muted); font-size:14.5px; margin:0 0 14px}
-  .signup input[type=email]{width:100%; font-size:16px; padding:11px 12px; border:1px solid var(--line); border-radius:6px; background:#fff}
-  .signup button{width:100%; margin-top:10px}
-  .ok{color:var(--good); font-weight:600; display:none; margin-top:10px}
-  .fine{font-size:12.5px; color:var(--muted); margin-top:10px}
-  .faq h2{font-size:19px; margin:28px 0 8px}
-  .faq p, .faq li{color:var(--muted); font-size:15px}
-  .guides a{color:var(--accent)}
-  @media print{
-    body{background:#fff}
-    body *{visibility:hidden}
-    #invoice, #invoice *{visibility:visible}
-    #invoice{position:absolute; left:0; top:0; width:100%; border:none; border-radius:0; padding:0}
-  }
+  .tool-wrap{max-width:1120px;margin:0 auto;padding:34px 20px 80px}.tool-head{max-width:850px;padding:10px 0 12px}.tool-head .lead{max-width:820px}
+  .downloads{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 44px}a.dl{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow-sm);transition:transform .18s,box-shadow .18s,border-color .18s}a.dl:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--line-strong);color:var(--ink)}
+  .format{width:48px;height:48px;border-radius:12px;background:var(--mint);display:grid;place-items:center;color:var(--accent-dark);font-size:10px;font-weight:850;letter-spacing:.06em}a.dl:nth-child(2) .format{background:var(--lime)}a.dl:nth-child(3) .format{background:var(--sky)}a.dl strong{display:block;font-size:14px;margin-bottom:3px}a.dl span.copy{display:block;color:var(--muted);font-size:12px;line-height:1.35}
+  .generator-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin:0 0 18px}.generator-head h2{margin:0}.generator-head p{color:var(--muted);font-size:14px;max-width:480px;margin:0}.generator-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(430px,1.1fr);gap:20px;align-items:start}
+  .form-card{margin:0;padding:28px}.form-section{padding-top:20px;margin-top:22px;border-top:1px solid var(--line)}.form-section:first-child{padding-top:0;margin-top:0;border:0}.section-label{font-family:var(--sans);font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);font-weight:800;margin:0 0 10px}.two-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .items-table{width:100%;border-collapse:collapse;margin-top:8px}.items-table th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:5px 6px 5px 0}.items-table td{padding:4px 6px 4px 0;vertical-align:top;border:0}.items-table input{font-size:14px;padding:9px}.del{background:none;border:none;color:var(--muted);font-size:19px;cursor:pointer;padding:7px 4px;width:auto;margin:0}.del:hover{color:var(--danger)}button.ghost{background:transparent;color:var(--accent-dark);border:1px solid var(--line-strong);margin-top:9px;padding:10px 14px;border-radius:999px;font-weight:700;cursor:pointer}button.ghost:hover{background:var(--mint);border-color:#b9d4c6}.toolbar{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}.toolbar .button{width:100%}.vat-row{display:flex;align-items:flex-start;gap:9px;margin-top:13px;font-size:14px}.vat-row input{width:auto;margin-top:4px}.vat-row label{margin:0;font-weight:500}
+  .preview-column{position:sticky;top:20px}.preview-shell{background:#e6ebe6;border:1px solid #d1d8d1;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm)}.preview-label{display:flex;justify-content:space-between;align-items:center;margin:0 2px 12px;font-size:12px;color:var(--muted)}.preview-label strong{color:var(--ink)}#invoice{background:#fff;border:1px solid #d9ddd8;border-radius:10px;padding:34px;font-size:13px;min-height:520px;box-shadow:0 12px 32px rgba(20,35,30,.08)}#invoice .inv-head{font-family:var(--sans);color:var(--accent);font-size:28px;font-weight:800;letter-spacing:.08em;margin-bottom:18px}#invoice .grid2{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}#invoice .meta{font-variant-numeric:tabular-nums}#invoice .meta b{display:inline-block;min-width:86px}#invoice h3{font-family:var(--sans);font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:20px 0 5px}#invoice table{width:100%;border-collapse:collapse;margin-top:8px;font-variant-numeric:tabular-nums}#invoice th{text-align:left;background:var(--deep);color:#fff;padding:8px;font-size:10px}#invoice th.num,#invoice td.num{text-align:right}#invoice td{padding:8px;border-bottom:1px solid #e5e8e4}#invoice .totals{margin-top:13px;margin-left:auto;max-width:270px}#invoice .totals div{display:flex;justify-content:space-between;padding:4px 0}#invoice .totals .grand{font-weight:750;color:var(--accent);font-size:17px;border-top:2px solid var(--accent);padding-top:8px;margin-top:5px}#invoice .pay{margin-top:16px;white-space:pre-line}
+  .privacy-note{display:flex;gap:9px;align-items:flex-start;margin:13px 2px 0;color:var(--muted);font-size:12px;line-height:1.45}.privacy-note:before{content:'✓';width:20px;height:20px;flex:0 0 20px;border-radius:50%;display:grid;place-items:center;background:var(--mint);color:var(--accent);font-weight:800}.signup{background:var(--mint);border-color:#c9dfd2;box-shadow:none;max-width:none;margin-top:34px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}.signup h2{font-size:25px;margin:0 0 7px}.signup p{color:var(--muted);font-size:14px}.signup button{width:100%;margin-top:10px}.ok{color:var(--good);font-weight:700;display:none;margin-top:10px}.content-below{max-width:760px;margin-top:56px}.content-below h2{font-size:26px}.content-below p,.content-below li{color:var(--muted);font-size:15px}
+  @media(max-width:900px){.generator-grid{grid-template-columns:1fr}.preview-column{position:static}.downloads{grid-template-columns:1fr 1fr}.signup{grid-template-columns:1fr}}@media(max-width:560px){.tool-wrap{padding:24px 16px 60px}.downloads{grid-template-columns:1fr}.generator-head{display:block}.generator-head p{margin-top:8px}.form-card{padding:20px 17px}.two-fields{grid-template-columns:1fr}.preview-shell{padding:9px}#invoice{padding:22px 16px;min-height:430px}.items-table th:nth-child(2){width:48px!important}.items-table th:nth-child(3){width:70px!important}}@media print{body{background:#fff}body *{visibility:hidden}#invoice,#invoice *{visibility:visible}#invoice{position:absolute;left:0;top:0;width:100%;border:none;border-radius:0;padding:0;box-shadow:none}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Free UK Invoice Generator","url":"https://www.moneyharbour.co.uk/invoice-templates/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Free online invoice generator for UK sole traders and small businesses. Fill in your details, add line items with optional VAT, print or save as PDF. Free Word, Excel and PDF invoice templates included."}
 </script>
 </head>
 <body>
-<div class="wrap">
-<header class="mast"><a class="mast-brand" href="/">Money <span>Harbour</span></a><span class="mast-tag">Independent UK money tools</span></header>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Money Harbour home"><img src="/assets/harbour-mark.svg" alt=""><span class="brand-name">Money <span>Harbour</span></span></a><nav class="site-nav" aria-label="Primary"><a href="/#tools">Tools</a><a href="/remortgage/">Mortgages</a><a href="/invoice-templates/" aria-current="page">Invoicing</a><a href="/about/">About</a><a class="nav-cta" href="/#tools">Use a free tool</a></nav><a class="mobile-nav" href="#footer-nav">Menu</a></div></header>
+<main id="main" class="tool-wrap">
 <nav class="crumb"><a href="/">Money Harbour</a> › Invoice templates</nav>
-<header class="page">
-  <h1>Free UK invoice template — download it, or fill one in right here</h1>
-  <p>Grab a blank invoice template for Word, Excel or PDF, or use the free generator below: type your details, add your line items, toggle VAT, then print or save as PDF. No sign-up, no watermark, no upsell.</p>
-</header>
+<header class="tool-head"><p class="eyebrow">Free UK invoice tools</p><h1>Download a template—or create your invoice right here.</h1><p class="lead">Use the free browser-based generator or download a clean Word, Excel or PDF template. No account, no watermark and no invoice data sent to us.</p><div class="page-meta"><span>Built for UK businesses</span><span>Optional VAT</span><span>Your invoice stays in your browser</span></div></header>
 
 <div class="downloads">
-  <a class="dl" href="/invoice-templates/files/invoice-template-uk.docx" data-goatcounter-click="dl-docx">
-    <strong>Word template (.docx)</strong><span>Editable in Word, Google Docs and Pages. Download free.</span>
-  </a>
-  <a class="dl" href="/invoice-templates/files/invoice-template-uk.xlsx" data-goatcounter-click="dl-xlsx">
-    <strong>Excel template (.xlsx)</strong><span>Totals and VAT calculated by formula. Download free.</span>
-  </a>
-  <a class="dl" href="/invoice-templates/files/invoice-template-uk.pdf" data-goatcounter-click="dl-pdf">
-    <strong>PDF template</strong><span>Print-ready blank invoice. Download free.</span>
-  </a>
+  <a class="dl" href="/invoice-templates/files/invoice-template-uk.docx" data-goatcounter-click="dl-docx"><span class="format">DOCX</span><span><strong>Word template</strong><span class="copy">Editable in Word, Google Docs and Pages.</span></span></a>
+  <a class="dl" href="/invoice-templates/files/invoice-template-uk.xlsx" data-goatcounter-click="dl-xlsx"><span class="format">XLSX</span><span><strong>Excel template</strong><span class="copy">Automatic totals and optional VAT formulas.</span></span></a>
+  <a class="dl" href="/invoice-templates/files/invoice-template-uk.pdf" data-goatcounter-click="dl-pdf"><span class="format">PDF</span><span><strong>Blank PDF template</strong><span class="copy">Print-ready for filling in by hand.</span></span></a>
 </div>
-
-<h2 id="generator">Free invoice generator</h2>
-<div class="cols">
-  <div class="card">
+<div class="generator-head"><div><p class="eyebrow">Browser tool</p><h2 id="generator">Create your invoice</h2></div><p>Complete the fields and watch the finished invoice update instantly. Print it directly or choose “Save as PDF” in your browser.</p></div>
+<div class="generator-grid">
+  <div class="card form-card">
+    <div class="form-section"><p class="section-label">1. Your business</p>
     <label for="bizName">Your business / trading name</label>
     <input type="text" id="bizName" placeholder="Jane Smith Plumbing">
     <label for="bizAddr">Your address &amp; contact details</label>
     <textarea id="bizAddr" rows="3" placeholder="12 Harbour Lane&#10;Bristol BS1 4ST&#10;jane@example.com · 07700 900123"></textarea>
-    <div class="cols" style="gap:12px">
+    <div class="two-fields">
       <div>
         <label for="invNo">Invoice number</label>
         <input type="text" id="invNo" placeholder="0001">
@@ -121,9 +58,11 @@
     </div>
     <label for="dueDate">Payment due date</label>
     <input type="date" id="dueDate">
+    </div><div class="form-section"><p class="section-label">2. Your client</p>
     <label for="clientAddr">Bill to (client name &amp; address)</label>
     <textarea id="clientAddr" rows="3" placeholder="Acme Ltd&#10;1 High Street&#10;London EC1A 1AA"></textarea>
 
+    </div><div class="form-section"><p class="section-label">3. What you are charging for</p>
     <table class="items-table" id="itemsTable">
       <thead><tr><th>Description</th><th style="width:52px">Qty</th><th style="width:84px">Unit £</th><th style="width:30px"></th></tr></thead>
       <tbody></tbody>
@@ -134,14 +73,13 @@
       <input type="checkbox" id="vatOn">
       <label for="vatOn" style="margin:0; font-weight:400">Add VAT at 20% (VAT-registered businesses only)</label>
     </div>
+    </div><div class="form-section"><p class="section-label">4. Payment and export</p>
     <label for="payDetails">Payment details &amp; terms</label>
     <textarea id="payDetails" rows="3" placeholder="Bank: Example Bank · Account name: Jane Smith&#10;Sort code: 00-00-00 · Account: 00000000&#10;Payment due within 14 days. Reference: invoice number."></textarea>
-    <div class="toolbar">
-      <button type="button" onclick="window.print()" data-goatcounter-click="print-invoice">Print / save as PDF</button>
+    <div class="toolbar"><button class="button" type="button" onclick="window.print()" data-goatcounter-click="print-invoice">Print or save as PDF <span aria-hidden="true">→</span></button></div>
     </div>
   </div>
-
-  <div>
+  <div class="preview-column"><div class="preview-shell"><div class="preview-label"><strong>Live preview</strong><span>Exactly what prints</span></div>
     <div id="invoice" aria-live="polite">
       <div class="inv-head">INVOICE</div>
       <div class="grid2">
@@ -165,8 +103,8 @@
       </div>
       <h3>Payment details</h3>
       <div class="pay" id="pPay">—</div>
-    </div>
-    <p class="fine">The preview is exactly what prints. Use your browser's "Save as PDF" in the print dialog to get a PDF invoice.</p>
+    </div></div>
+    <p class="privacy-note">Everything typed into the invoice generator stays on this device. Money Harbour does not receive or store your business, client, invoice or payment details.</p>
   </div>
 </div>
 
@@ -183,7 +121,7 @@
   <p class="fine">One email when we launch. Unsubscribe anytime. No spam, no selling your address.</p>
 </div>
 
-<div class="faq">
+<div class="content-below">
   <h2>What a UK invoice must include</h2>
   <ul>
     <li>The word "invoice" and a unique, sequential invoice number</li>
@@ -198,7 +136,7 @@
   <p>A sole trader invoices under their own name (or trading name) — see the <a href="/invoice-templates/self-employed/">self-employed invoice template</a>. A limited company must also show its full registered name, company number and registered office address.</p>
 </div>
 
-<div class="faq guides">
+<div class="content-below guides">
   <h2>Templates by format</h2>
   <p>
     <a href="/invoice-templates/word/">Invoice template for Word</a> ·
@@ -208,10 +146,9 @@
   </p>
 </div>
 
-<footer>
-  Money Harbour is an independent UK site. This page is general information, not tax or legal advice — check current HMRC guidance for VAT and invoicing rules. <a href="/">More free tools</a>.
-</footer>
-</div>
+<footer class="disclaimer">Money Harbour is an independent UK site. This page is general information, not tax or legal advice—check current HMRC guidance for VAT and invoicing rules.</footer>
+</main>
+<footer class="site-footer" id="footer-nav"><div class="footer-inner"><div class="footer-about"><div class="footer-brand">Money <span>Harbour</span></div><p class="footer-intro">Independent UK calculators and practical tools. Clear assumptions, no account required.</p></div><div class="footer-col"><h2>Tools</h2><a href="/remortgage/">Remortgage calculator</a><a href="/invoice-templates/">Invoice generator</a><a href="/invoice-templates/word/">Word invoice template</a></div><div class="footer-col"><h2>Guides</h2><a href="/remortgage/should-i-remortgage/">Should I remortgage?</a><a href="/remortgage/fees/">Remortgage fees</a><a href="/remortgage/svr-rates/">UK SVR rates</a></div><div class="footer-col"><h2>Money Harbour</h2><a href="/about/">About</a><a href="/methodology/">Methodology</a><a href="/how-we-make-money/">How we make money</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div></div><div class="footer-bottom"><span>© 2026 Money Harbour</span><span>General information only—not financial, tax or legal advice.</span></div></footer>
 
 <script>
 (function(){
