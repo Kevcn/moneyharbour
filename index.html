@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Money Harbour — Clear, Independent UK Money Tools</title>
-<meta name="description" content="Free, independent UK money calculators and practical tools. Calculate take-home pay, compare remortgage costs and create invoices without an account.">
+<meta name="description" content="Free, independent UK money calculators and practical tools. Calculate mortgage payments and take-home pay, compare remortgage costs and create invoices.">
 <link rel="canonical" href="https://www.moneyharbour.co.uk/">
 <link rel="preload" href="/assets/fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -24,7 +24,7 @@
   .mini-result .number{font-size:38px;line-height:1.1;font-weight:780;color:var(--accent);font-variant-numeric:tabular-nums;margin:3px 0}
   .mini-result .sub{font-size:12.5px;color:var(--muted)}
   .compare-bars{display:grid;gap:8px;margin-top:18px}.compare-row{display:grid;grid-template-columns:60px 1fr 54px;align-items:center;gap:9px;font-size:11px;color:var(--muted)}
-  .track{height:8px;background:#e7ebe5;border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--accent);border-radius:inherit}.bar.current{width:92%;background:#839089}.bar.new{width:68%}
+  .track{height:8px;background:#e7ebe5;border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--accent);border-radius:inherit}.bar.current{width:90%;background:#839089}.bar.new{width:10%}
   .board-link{display:flex;justify-content:space-between;align-items:center;color:#fff;text-decoration:none;font-weight:700;padding:13px 4px 2px}.board-link:hover{color:var(--lime)}
   .section{padding:72px 0}.section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:end;margin-bottom:30px}.section-head h2{margin:0}.section-head p{color:var(--muted);margin:0;max-width:580px}
   .tool-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:20px}
@@ -51,7 +51,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="header-inner">
   <a class="brand" href="/" aria-label="Money Harbour home"><img src="/assets/harbour-mark.svg" alt=""><span class="brand-name">Money <span>Harbour</span></span></a>
-  <nav class="site-nav" aria-label="Primary"><a href="/#tools">Tools</a><a href="/salary-calculator/">Salaries</a><a href="/remortgage/">Mortgages</a><a href="/invoice-templates/">Invoicing</a><a href="/about/">About</a><a class="nav-cta" href="/#tools">Use a free tool</a></nav>
+  <nav class="site-nav" aria-label="Primary"><a href="/#tools">Tools</a><a href="/salary-calculator/">Salaries</a><a href="/mortgage/">Mortgages</a><a href="/invoice-templates/">Invoicing</a><a href="/about/">About</a><a class="nav-cta" href="/#tools">Use a free tool</a></nav>
   <a class="mobile-nav" href="#footer-nav">Menu</a>
 </div></header>
 <main id="main">
@@ -61,16 +61,16 @@
         <p class="eyebrow">Independent UK money tools</p>
         <h1>Understand the numbers. Make the decision.</h1>
         <p class="lead">Free calculators and practical tools for the money decisions that matter—built for the UK, explained in plain English and usable without an account.</p>
-        <div class="button-row"><a class="button" href="/salary-calculator/">Calculate take-home pay <span aria-hidden="true">→</span></a><a class="button secondary" href="/remortgage/">Compare mortgage rates</a></div>
+        <div class="button-row"><a class="button" href="/mortgage/">Calculate a mortgage <span aria-hidden="true">→</span></a><a class="button secondary" href="/salary-calculator/">Calculate take-home pay</a></div>
       </div>
-      <div class="hero-board" aria-label="Example remortgage calculator result">
-        <div class="board-label">Remortgage calculator</div>
-        <div class="board-question">What could a lower rate save you each month?</div>
+      <div class="hero-board" aria-label="Example mortgage calculator result">
+        <div class="board-label">Mortgage calculator</div>
+        <div class="board-question">What could a £315,000 mortgage cost each month?</div>
         <div class="mini-result">
-          <div class="label">Illustrative monthly saving</div><div class="number">£184<span style="font-size:16px">/mo</span></div><div class="sub">Based on the balance, term and rates you enter.</div>
-          <div class="compare-bars"><div class="compare-row"><span>Current</span><span class="track"><span class="bar current"></span></span><b>6.5%</b></div><div class="compare-row"><span>New</span><span class="track"><span class="bar new"></span></span><b>4.5%</b></div></div>
+          <div class="label">Illustrative monthly repayment</div><div class="number">£1,751<span style="font-size:16px">/mo</span></div><div class="sub">£350,000 property · 10% deposit · 25 years · 4.5%</div>
+          <div class="compare-bars"><div class="compare-row"><span>Mortgage</span><span class="track"><span class="bar current"></span></span><b>£315k</b></div><div class="compare-row"><span>Deposit</span><span class="track"><span class="bar new"></span></span><b>£35k</b></div></div>
         </div>
-        <a class="board-link" href="/remortgage/"><span>Use your own numbers</span><span aria-hidden="true">→</span></a>
+        <a class="board-link" href="/mortgage/"><span>Use your own numbers</span><span aria-hidden="true">→</span></a>
       </div>
     </section>
     <div class="trust-strip" aria-label="Money Harbour principles">
@@ -90,7 +90,7 @@
         <span class="arrow">Open the salary calculator →</span>
       </a>
       <div class="tool-side">
-        <a class="tool-secondary" href="/remortgage/"><span class="badge">Calculator</span><h3>See what your current rate is costing</h3><p>Compare monthly payments at two rates using your remaining balance and term.</p><span class="arrow">Calculate your saving →</span></a>
+        <a class="tool-secondary" href="/mortgage/"><span class="badge">Mortgage hub</span><h3>Estimate a mortgage and compare the trade-offs</h3><p>Calculate monthly payments, total interest and LTV, then compare rates and terms.</p><span class="arrow">Open the mortgage calculator →</span></a>
         <a class="tool-secondary sky" href="/invoice-templates/#generator"><span class="badge">Free working tool</span><h3>Create a proper UK invoice</h3><p>Add line items and optional VAT, then print, save as PDF or download an editable template.</p><span class="arrow">Open the invoice generator →</span></a>
       </div>
     </div>
@@ -116,7 +116,7 @@
   </section>
 </main>
 <footer class="site-footer" id="footer-nav">
-  <div class="footer-inner"><div class="footer-about"><div class="footer-brand">Money <span>Harbour</span></div><p class="footer-intro">Independent UK calculators and practical tools. Clear assumptions, no account required.</p></div><div class="footer-col"><h2>Tools</h2><a href="/salary-calculator/">Salary calculator</a><a href="/remortgage/">Remortgage calculator</a><a href="/invoice-templates/">Invoice generator</a><a href="/invoice-templates/word/">Word invoice template</a></div><div class="footer-col"><h2>Guides</h2><a href="/remortgage/should-i-remortgage/">Should I remortgage?</a><a href="/remortgage/fees/">Remortgage fees</a><a href="/remortgage/svr-rates/">UK SVR rates</a></div><div class="footer-col"><h2>Money Harbour</h2><a href="/about/">About</a><a href="/methodology/">Methodology</a><a href="/how-we-make-money/">How we make money</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div></div>
+  <div class="footer-inner"><div class="footer-about"><div class="footer-brand">Money <span>Harbour</span></div><p class="footer-intro">Independent UK calculators and practical tools. Clear assumptions, no account required.</p></div><div class="footer-col"><h2>Tools</h2><a href="/mortgage/">Mortgage calculator</a><a href="/remortgage/">Remortgage calculator</a><a href="/salary-calculator/">Salary calculator</a><a href="/invoice-templates/">Invoice generator</a></div><div class="footer-col"><h2>Guides</h2><a href="/mortgage/#first-time-buyer-guide">First-time buyers</a><a href="/remortgage/should-i-remortgage/">Should I remortgage?</a><a href="/remortgage/fees/">Remortgage fees</a></div><div class="footer-col"><h2>Money Harbour</h2><a href="/about/">About</a><a href="/methodology/">Methodology</a><a href="/how-we-make-money/">How we make money</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div></div>
   <div class="footer-bottom"><span>© 2026 Money Harbour</span><span>General information only—not financial, tax or legal advice.</span></div>
 </footer>
 <script data-goatcounter="https://kevinli.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
