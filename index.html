@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Money Harbour — Clear, Independent UK Money Tools</title>
-<meta name="description" content="Free, independent UK money calculators and practical tools. Calculate remortgage savings, create an invoice and understand the numbers without jargon or an account.">
+<meta name="description" content="Free, independent UK money calculators and practical tools. Calculate take-home pay, compare remortgage costs and create invoices without an account.">
 <link rel="canonical" href="https://www.moneyharbour.co.uk/">
 <link rel="preload" href="/assets/fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -35,6 +35,7 @@
   .invoice-preview{margin-top:auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;grid-template-columns:1fr 110px;gap:18px;min-height:150px}
   .invoice-lines span{display:block;height:8px;background:#e8ebe6;border-radius:999px;margin:9px 0}.invoice-lines span:nth-child(1){width:45%;height:14px;background:var(--accent)}.invoice-lines span:nth-child(2){width:82%}.invoice-lines span:nth-child(3){width:65%}
   .invoice-total{align-self:end;border-top:2px solid var(--accent);padding-top:10px;color:var(--accent);font-weight:800;text-align:right}
+  .salary-preview{margin-top:auto;background:var(--deep);color:#fff;border-radius:18px;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:end}.salary-preview small{display:block;color:#bcd0c7;text-transform:uppercase;letter-spacing:.08em;font-weight:750}.salary-preview strong{display:block;color:var(--lime);font-size:34px;line-height:1.1;margin-top:4px}.salary-preview ul{list-style:none;padding:0;margin:0}.salary-preview li{display:flex;justify-content:space-between;gap:15px;border-top:1px solid rgba(255,255,255,.13);padding:6px 0;font-size:12px;color:#d9e7e0}
   .tool-side{display:grid;gap:20px}
   .tool-secondary{padding:25px;background:var(--mint);border:1px solid #c9dfd2;min-height:190px}.tool-secondary.sky{background:var(--sky);border-color:#c5dddd}.tool-secondary h3{font-size:23px;margin:13px 0 7px}.tool-secondary p{color:var(--muted);font-size:14px;margin:0}.arrow{margin-top:auto;padding-top:18px;font-weight:750;color:var(--accent-dark)}
   .principles{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -50,7 +51,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="header-inner">
   <a class="brand" href="/" aria-label="Money Harbour home"><img src="/assets/harbour-mark.svg" alt=""><span class="brand-name">Money <span>Harbour</span></span></a>
-  <nav class="site-nav" aria-label="Primary"><a href="/#tools">Tools</a><a href="/remortgage/">Mortgages</a><a href="/invoice-templates/">Invoicing</a><a href="/about/">About</a><a class="nav-cta" href="/#tools">Use a free tool</a></nav>
+  <nav class="site-nav" aria-label="Primary"><a href="/#tools">Tools</a><a href="/salary-calculator/">Salaries</a><a href="/remortgage/">Mortgages</a><a href="/invoice-templates/">Invoicing</a><a href="/about/">About</a><a class="nav-cta" href="/#tools">Use a free tool</a></nav>
   <a class="mobile-nav" href="#footer-nav">Menu</a>
 </div></header>
 <main id="main">
@@ -60,7 +61,7 @@
         <p class="eyebrow">Independent UK money tools</p>
         <h1>Understand the numbers. Make the decision.</h1>
         <p class="lead">Free calculators and practical tools for the money decisions that matter—built for the UK, explained in plain English and usable without an account.</p>
-        <div class="button-row"><a class="button" href="/remortgage/">Calculate remortgage savings <span aria-hidden="true">→</span></a><a class="button secondary" href="/invoice-templates/#generator">Create an invoice</a></div>
+        <div class="button-row"><a class="button" href="/salary-calculator/">Calculate take-home pay <span aria-hidden="true">→</span></a><a class="button secondary" href="/remortgage/">Compare mortgage rates</a></div>
       </div>
       <div class="hero-board" aria-label="Example remortgage calculator result">
         <div class="board-label">Remortgage calculator</div>
@@ -83,14 +84,14 @@
   <section class="section shell" id="tools">
     <div class="section-head"><h2>Useful before impressive.</h2><p>Each tool is designed to answer one practical question quickly. No account creation, no gated result and no sales call hidden behind the button.</p></div>
     <div class="tool-layout">
-      <a class="tool-feature" href="/invoice-templates/#generator">
-        <div class="tool-copy"><span class="badge">Free working tool</span><h3>Create a proper UK invoice</h3><p>Fill in your details, add line items and optional VAT, then print or save the finished invoice as PDF—or download Word, Excel and PDF templates.</p></div>
-        <div class="invoice-preview" aria-hidden="true"><div class="invoice-lines"><span></span><span></span><span></span><span style="width:92%"></span><span style="width:74%"></span></div><div class="invoice-total">Total £1,240</div></div>
-        <span class="arrow">Open the invoice generator →</span>
+      <a class="tool-feature" href="/salary-calculator/">
+        <div class="tool-copy"><span class="badge">Updated for 2026/27</span><h3>Turn a UK salary into take-home pay</h3><p>Estimate Income Tax, National Insurance, pension and student-loan deductions—with Scottish rates, tax codes and a one-off bonus when they apply.</p></div>
+        <div class="salary-preview" aria-hidden="true"><div><small>£50,000 salary</small><strong>£3,293/mo</strong><small>estimated take home</small></div><ul><li><span>Income Tax</span><b>£7,486</b></li><li><span>National Insurance</span><b>£2,994</b></li><li><span>Tax year</span><b>2026/27</b></li></ul></div>
+        <span class="arrow">Open the salary calculator →</span>
       </a>
       <div class="tool-side">
         <a class="tool-secondary" href="/remortgage/"><span class="badge">Calculator</span><h3>See what your current rate is costing</h3><p>Compare monthly payments at two rates using your remaining balance and term.</p><span class="arrow">Calculate your saving →</span></a>
-        <a class="tool-secondary sky" href="/remortgage/svr-rates/"><span class="badge">Checked July 2026</span><h3>UK standard variable rates</h3><p>See typical lender SVRs and understand the monthly cost of doing nothing.</p><span class="arrow">View the rate table →</span></a>
+        <a class="tool-secondary sky" href="/invoice-templates/#generator"><span class="badge">Free working tool</span><h3>Create a proper UK invoice</h3><p>Add line items and optional VAT, then print, save as PDF or download an editable template.</p><span class="arrow">Open the invoice generator →</span></a>
       </div>
     </div>
   </section>
@@ -110,12 +111,12 @@
     <div class="guide-list">
       <a class="guide-card" href="/remortgage/should-i-remortgage/"><small>Decision guide</small><h3>Should I remortgage?</h3><p>When switching pays, when it does not, and the six-month window many borrowers miss.</p></a>
       <a class="guide-card" href="/remortgage/fees/"><small>Costs</small><h3>Fees and the break-even sum</h3><p>Arrangement, legal, valuation and exit fees—plus the calculation that settles the question.</p></a>
-      <a class="guide-card" href="/invoice-templates/self-employed/"><small>Invoicing</small><h3>Self-employed invoices</h3><p>What a UK sole trader needs to include, what to leave out and when VAT applies.</p></a>
+      <a class="guide-card" href="/salary-calculator/#pensions-bonus"><small>Take-home pay</small><h3>How pension and bonus affect pay</h3><p>Understand salary sacrifice, net pay, relief at source and one-off bonus deductions.</p></a>
     </div>
   </section>
 </main>
 <footer class="site-footer" id="footer-nav">
-  <div class="footer-inner"><div class="footer-about"><div class="footer-brand">Money <span>Harbour</span></div><p class="footer-intro">Independent UK calculators and practical tools. Clear assumptions, no account required.</p></div><div class="footer-col"><h2>Tools</h2><a href="/remortgage/">Remortgage calculator</a><a href="/invoice-templates/">Invoice generator</a><a href="/invoice-templates/word/">Word invoice template</a></div><div class="footer-col"><h2>Guides</h2><a href="/remortgage/should-i-remortgage/">Should I remortgage?</a><a href="/remortgage/fees/">Remortgage fees</a><a href="/remortgage/svr-rates/">UK SVR rates</a></div><div class="footer-col"><h2>Money Harbour</h2><a href="/about/">About</a><a href="/methodology/">Methodology</a><a href="/how-we-make-money/">How we make money</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div></div>
+  <div class="footer-inner"><div class="footer-about"><div class="footer-brand">Money <span>Harbour</span></div><p class="footer-intro">Independent UK calculators and practical tools. Clear assumptions, no account required.</p></div><div class="footer-col"><h2>Tools</h2><a href="/salary-calculator/">Salary calculator</a><a href="/remortgage/">Remortgage calculator</a><a href="/invoice-templates/">Invoice generator</a><a href="/invoice-templates/word/">Word invoice template</a></div><div class="footer-col"><h2>Guides</h2><a href="/remortgage/should-i-remortgage/">Should I remortgage?</a><a href="/remortgage/fees/">Remortgage fees</a><a href="/remortgage/svr-rates/">UK SVR rates</a></div><div class="footer-col"><h2>Money Harbour</h2><a href="/about/">About</a><a href="/methodology/">Methodology</a><a href="/how-we-make-money/">How we make money</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div></div>
   <div class="footer-bottom"><span>© 2026 Money Harbour</span><span>General information only—not financial, tax or legal advice.</span></div>
 </footer>
 <script data-goatcounter="https://kevinli.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK Salary Calculator 2026/27 | Take-Home Pay & Tax</title>
+<meta name="description" content="Calculate UK take-home pay for 2026/27 after Income Tax, NI, pension, student loan and bonus. Supports tax codes and Scottish tax. Free and private.">
+<link rel="canonical" href="https://www.moneyharbour.co.uk/salary-calculator/">
+<meta property="og:title" content="UK Salary Calculator 2026/27 — Take-Home Pay">
+<meta property="og:description" content="A free UK PAYE salary and tax calculator with tax codes, Scottish rates, pensions, student loans and one-off bonuses.">
+<meta property="og:url" content="https://www.moneyharbour.co.uk/salary-calculator/">
+<meta property="og:type" content="website">
+<link rel="preload" href="/assets/fonts/fraunces-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/assets/harbour-mark.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0d3b2e">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .salary-wrap{max-width:1120px;margin:auto;padding:34px 24px 84px}.salary-head{max-width:880px;padding:8px 0 16px}.salary-head h1{font-size:clamp(38px,5.4vw,60px)}
+  .source-pill{display:inline-flex;gap:8px;align-items:center;background:var(--mint);border:1px solid #c9dfd2;border-radius:999px;color:var(--deep);padding:6px 11px;font-size:12px;font-weight:700;text-decoration:none}.source-pill:hover{color:var(--deep);background:#d1eadc}
+  .salary-shell{display:grid;grid-template-columns:minmax(0,.88fr) minmax(430px,1.12fr);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:var(--paper);box-shadow:var(--shadow-md);margin:22px 0 28px}
+  .salary-inputs{padding:28px;background:var(--paper)}.salary-inputs fieldset{border:0;margin:0;padding:0}.salary-inputs legend{font-size:15px;font-weight:780;color:var(--ink);padding:0;margin:0 0 2px}.group-intro{font-size:12.5px;color:var(--muted);margin:0 0 14px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.full{grid-column:1/-1}.money-field{position:relative}.money-field input{padding-left:29px}.money-field:before{content:'£';position:absolute;left:13px;bottom:12px;color:var(--muted);font-weight:650;z-index:1}
+  .input-section{padding:0 0 21px;margin:0 0 21px;border-bottom:1px solid var(--line)}.input-section:last-of-type{border-bottom:0;margin-bottom:4px}.input-section details summary{cursor:pointer;font-size:14px;font-weight:750;color:var(--deep);padding:5px 0}.input-section details[open] summary{margin-bottom:8px}
+  .check-row{display:flex;gap:10px;align-items:flex-start;margin:14px 0 4px}.check-row input{width:18px;height:18px;margin-top:2px;accent-color:var(--accent)}.check-row label{margin:0;font-weight:650}.check-row small{display:block;color:var(--muted);font-weight:450;line-height:1.4;margin-top:2px}
+  .calc-actions{display:flex;gap:10px;align-items:center;margin-top:15px}.calc-actions .button{flex:1}.reset-button{background:transparent;color:var(--muted);border:0;text-decoration:underline;cursor:pointer}.field-error{font-size:13px;color:var(--danger);font-weight:650;margin:9px 0 0}
+  .salary-results{background:var(--deep);color:#fff;padding:29px;min-width:0}.result-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.result-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:var(--lime);font-weight:800}.take-home{font-size:clamp(46px,6vw,68px);line-height:1;font-weight:790;letter-spacing:-.045em;font-variant-numeric:tabular-nums;margin:8px 0 2px}.take-home-sub{color:#bfd2c9;font-size:14px}
+  .period-tabs{display:flex;gap:4px;flex-wrap:wrap;margin:19px 0}.period-tabs button{background:rgba(255,255,255,.08);color:#d9e7e0;border:1px solid rgba(255,255,255,.13);border-radius:999px;padding:7px 10px;font-size:11px;font-weight:700;cursor:pointer}.period-tabs button.active{background:var(--lime);border-color:var(--lime);color:var(--deep)}
+  .deduction-bar{height:12px;border-radius:999px;overflow:hidden;display:flex;background:rgba(255,255,255,.08);margin:5px 0 15px}.deduction-bar span{height:100%;transition:width .3s ease}.bar-takehome{background:var(--lime)}.bar-tax{background:#75bda3}.bar-ni{background:#74a7ae}.bar-other{background:#e6b86d}.bar-legend{display:grid;grid-template-columns:1fr 1fr;gap:8px 13px;margin-bottom:21px}.bar-legend div{font-size:11px;color:#bcd0c7}.bar-legend i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}.bar-legend b{color:#fff;font-size:13px;margin-left:3px}
+  .result-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.13);border-radius:14px;overflow:hidden;margin:17px 0}.result-stat{background:rgba(6,40,29,.62);padding:13px}.result-stat span{display:block;color:#a9c3b7;font-size:10px;text-transform:uppercase;letter-spacing:.07em}.result-stat b{font-size:18px;font-variant-numeric:tabular-nums}
+  .result-table{width:100%;color:#fff;margin-top:6px}.result-table th,.result-table td{border-bottom:1px solid rgba(255,255,255,.12);padding:9px 2px;text-transform:none;letter-spacing:0;font-size:12.5px}.result-table th{color:#c7d9d1;font-weight:550}.result-table td{text-align:right;font-weight:700}.result-table .total-row th,.result-table .total-row td{color:var(--lime);font-weight:800;border-bottom:0;padding-top:12px}
+  .tax-band-list{list-style:none;padding:0;margin:16px 0 0}.tax-band-list li{display:flex;justify-content:space-between;gap:14px;border-top:1px solid rgba(255,255,255,.12);padding:9px 1px;font-size:11.5px;color:#bcd0c7}.tax-band-list b{display:inline-block;color:var(--lime);width:34px}.tax-band-list li span:last-child{text-align:right}
+  .warning-panel{background:#f8e8c8;color:#49350d;border-radius:12px;padding:12px 14px;margin-top:17px}.warning-panel strong{font-size:12px}.warning-panel ul{margin:5px 0 0;padding-left:17px}.warning-panel li{font-size:11.5px;margin:3px 0}
+  .below-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:26px 0}.below-grid .card{margin:0}.below-grid h2{font-size:24px;margin:0 0 8px}.below-grid p{color:var(--muted);font-size:14px}.payday-panel{margin:26px 0}.payday-panel h2{margin:0 0 7px;font-size:27px}.payday-table th:not(:first-child),.payday-table td{text-align:right}.payday-table tr:last-child{font-weight:800;background:var(--mint)}
+  .content-grid{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:52px;align-items:start;margin-top:62px}.salary-content{max-width:760px}.salary-content h2{scroll-margin-top:20px}.salary-content h3{font-family:var(--sans);font-size:18px}.salary-content p,.salary-content li{color:var(--ink-2)}.source-list{padding-left:20px}.source-list li{margin:9px 0}.source-list a{font-weight:650}.on-page{position:sticky;top:20px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px}.on-page h2{font-family:var(--sans);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin:0 0 12px}.on-page a{display:block;font-size:13px;text-decoration:none;color:var(--ink-2);padding:6px 0;border-bottom:1px solid var(--line)}.on-page a:last-child{border:0}.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{cursor:pointer;font-weight:750;color:var(--ink)}.faq details p{font-size:14px;margin-bottom:3px}
+  .review-box{background:var(--mint);border:1px solid #c9dfd2;border-radius:16px;padding:20px 22px;margin:28px 0}.review-box p{font-size:13.5px;margin:5px 0}.review-box strong{color:var(--deep)}
+  @media(max-width:900px){.salary-shell{grid-template-columns:1fr}.salary-results{min-height:580px}.content-grid{grid-template-columns:1fr}.on-page{display:none}}
+  @media(max-width:620px){.salary-wrap{padding:25px 16px 60px}.salary-inputs,.salary-results{padding:21px 18px}.form-grid,.below-grid{grid-template-columns:1fr}.full{grid-column:auto}.take-home{font-size:50px}.bar-legend{grid-template-columns:1fr 1fr}.tax-band-list li{display:block}.tax-band-list li span{display:block}.tax-band-list li span:last-child{text-align:left;margin:2px 0 0 34px}.payday-panel{overflow-x:auto}.payday-table{min-width:520px}}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"WebApplication","name":"UK Salary Calculator 2026/27","url":"https://www.moneyharbour.co.uk/salary-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Web","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"UK PAYE salary, take-home pay and Income Tax calculator for 2026/27 with tax codes, Scottish rates, pensions, student loans and bonuses."},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How is UK take-home pay calculated?","acceptedAnswer":{"@type":"Answer","text":"Take-home pay is gross employment pay minus PAYE Income Tax, employee Class 1 National Insurance, pension deductions and any student or postgraduate loan deductions that apply."}},
+      {"@type":"Question","name":"Does this salary calculator include Scottish Income Tax?","acceptedAnswer":{"@type":"Answer","text":"Yes. Select Scotland or enter an S-prefixed tax code to use the Scottish starter, basic, intermediate, higher, advanced and top rates for 2026/27."}},
+      {"@type":"Question","name":"How is a bonus taxed in the UK?","acceptedAnswer":{"@type":"Answer","text":"A cash bonus is employment income. It can increase Income Tax, National Insurance and student-loan deductions. This calculator places the bonus in one pay period so period-based deductions are visible."}},
+      {"@type":"Question","name":"Does salary sacrifice reduce tax and National Insurance?","acceptedAnswer":{"@type":"Answer","text":"A valid pension salary-sacrifice arrangement normally reduces the cash salary subject to Income Tax and employee National Insurance. Net pay and relief-at-source pensions work differently."}},
+      {"@type":"Question","name":"Why might my payslip differ from this estimate?","acceptedAnswer":{"@type":"Answer","text":"Payroll rounding, cumulative pay, an emergency or changing tax code, benefits, statutory pay, arrears, multiple jobs and scheme-specific pension rules can all make a payslip differ."}},
+      {"@type":"Question","name":"Can self-employed people use this calculator?","acceptedAnswer":{"@type":"Answer","text":"No. This calculator is for employees paid through PAYE. Self-employed Income Tax, Class 4 National Insurance and payments on account use different rules."}}
+    ]}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Money Harbour home"><img src="/assets/harbour-mark.svg" alt=""><span class="brand-name">Money <span>Harbour</span></span></a><nav class="site-nav" aria-label="Primary"><a href="/#tools">Tools</a><a href="/salary-calculator/" aria-current="page">Salaries</a><a href="/remortgage/">Mortgages</a><a href="/invoice-templates/">Invoicing</a><a href="/about/">About</a><a class="nav-cta" href="#calculator">Calculate pay</a></nav><a class="mobile-nav" href="#footer-nav">Menu</a></div></header>
+<main id="main" class="salary-wrap">
+  <nav class="crumb"><a href="/">Money Harbour</a> › UK salary calculator</nav>
+  <header class="salary-head">
+    <p class="eyebrow">Free UK take-home pay calculator</p>
+    <h1>UK Salary Calculator 2026/27</h1>
+    <p class="lead">Enter your salary to estimate take-home pay after Income Tax, National Insurance, pension and student-loan deductions. Add your tax code, a one-off bonus and Scottish rates when they apply.</p>
+    <div class="page-meta"><span>6 April 2026–5 April 2027</span><span>Employees paid through PAYE</span><span>Inputs stay in your browser</span></div>
+    <a class="source-pill" href="#sources">✓ Based on current GOV.UK and Scottish Government rates</a>
+  </header>
+
+  <section class="salary-shell" id="calculator" aria-label="UK salary and take-home pay calculator">
+    <form class="salary-inputs" id="salary-form" novalidate>
+      <div class="input-section">
+        <fieldset><legend>Your pay</legend><p class="group-intro">Use gross pay before tax and deductions.</p>
+          <div class="form-grid">
+            <div class="money-field"><label for="salary">Annual salary</label><input id="salary" name="salary" type="number" value="50000" min="1" max="10000000" step="100" inputmode="decimal" required></div>
+            <div class="money-field"><label for="bonus">One-off annual bonus <span class="hint">optional</span></label><input id="bonus" name="bonus" type="number" value="0" min="0" max="10000000" step="100" inputmode="decimal"></div>
+            <div><label for="pay-frequency">How often are you paid?</label><select id="pay-frequency"><option value="monthly">Monthly</option><option value="weekly">Weekly</option><option value="fortnightly">Every 2 weeks</option><option value="four-weekly">Every 4 weeks</option></select></div>
+            <div><label for="region">Income Tax region</label><select id="region"><option value="rUK">England, Wales or Northern Ireland</option><option value="scotland">Scotland</option></select></div>
+          </div>
+          <p class="field-error" id="salary-error" role="alert" hidden>Enter an annual salary greater than £0.</p>
+        </fieldset>
+      </div>
+
+      <div class="input-section">
+        <fieldset><legend>Tax and loans</legend><p class="group-intro">1257L is the standard code for most employees. Check your payslip if yours differs.</p>
+          <div class="form-grid">
+            <div><label for="tax-code">Tax code</label><input id="tax-code" name="tax-code" type="text" value="1257L" maxlength="14" autocomplete="off" autocapitalize="characters" aria-describedby="tax-code-help"><small class="fine" id="tax-code-help">Supports S/C prefixes, BR, D0, D1, 0T, NT, K and emergency suffixes.</small></div>
+            <div><label for="student-loan">Student loan plan</label><select id="student-loan"><option value="none">No student loan</option><option value="plan1">Plan 1</option><option value="plan2">Plan 2</option><option value="plan4">Plan 4</option><option value="plan5">Plan 5</option></select></div>
+          </div>
+          <div class="check-row"><input id="postgraduate-loan" type="checkbox"><label for="postgraduate-loan">I also repay a Postgraduate Loan<small>This can be deducted at the same time as Plan 1, 2, 4 or 5.</small></label></div>
+        </fieldset>
+      </div>
+
+      <div class="input-section">
+        <fieldset><legend>Pension</legend><p class="group-intro">Choose how your scheme gives tax relief; the methods affect take-home pay differently.</p>
+          <label for="pension-type">Pension deduction method</label><select id="pension-type"><option value="none">No employee pension contribution</option><option value="salary-sacrifice">Salary sacrifice</option><option value="net-pay">Net pay arrangement</option><option value="relief-at-source">Relief at source</option></select>
+          <div class="form-grid" id="pension-fields" hidden>
+            <div><label for="pension-amount">Your gross contribution</label><input id="pension-amount" type="number" value="5" min="0" max="1000000" step="0.1" inputmode="decimal"></div>
+            <div><label for="pension-input">Enter contribution as</label><select id="pension-input"><option value="percent">% of salary and bonus</option><option value="fixed">£ per tax year</option></select></div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="input-section">
+        <details><summary>More options</summary>
+          <div class="form-grid"><div><label for="weekly-hours">Hours worked per week</label><input id="weekly-hours" type="number" value="37.5" min="1" max="100" step="0.5" inputmode="decimal"><small class="fine">Used only for the hourly result.</small></div></div>
+          <div class="check-row"><input id="no-ni" type="checkbox"><label for="no-ni">Do not deduct employee National Insurance<small>For example, category C employees over State Pension age. Income Tax can still apply.</small></label></div>
+        </details>
+      </div>
+
+      <div class="calc-actions"><button class="button" type="submit">Calculate take-home pay <span aria-hidden="true">→</span></button><button class="reset-button" type="reset">Reset</button></div>
+      <p class="form-note">The calculation runs on this page. Salary, tax code and deduction choices are not sent to Money Harbour.</p>
+    </form>
+
+    <div class="salary-results" id="salary-results" aria-live="polite">
+      <div class="result-status" id="result-status"></div>
+      <div class="result-eyebrow">Estimated take-home pay</div><div class="take-home" id="take-home-value">£0</div><div class="take-home-sub"><span id="take-home-period">a month</span> · after the deductions selected</div>
+      <div class="period-tabs" aria-label="Show result by period"><button type="button" data-period="annual" aria-pressed="false">Annual</button><button type="button" class="active" data-period="monthly" aria-pressed="true">Monthly</button><button type="button" data-period="weekly" aria-pressed="false">Weekly</button><button type="button" data-period="daily" aria-pressed="false">Daily</button><button type="button" data-period="hourly" aria-pressed="false">Hourly</button></div>
+      <div class="deduction-bar" aria-hidden="true"><span class="bar-takehome" id="bar-takehome"></span><span class="bar-tax" id="bar-tax"></span><span class="bar-ni" id="bar-ni"></span><span class="bar-other" id="bar-other"></span></div>
+      <div class="bar-legend"><div><i class="bar-takehome"></i>Take home <b id="effective-rate">0%</b><span> total deductions</span></div><div><i class="bar-tax"></i>Tax <b id="annual-tax">£0</b></div><div><i class="bar-ni"></i>NI <b id="annual-ni">£0</b></div><div><i class="bar-other"></i>Pension/loans <b id="annual-other">£0</b></div></div>
+      <div class="result-stats"><div class="result-stat"><span>Annual gross</span><b id="annual-gross">£0</b></div><div class="result-stat"><span>Taxable pay</span><b id="taxable-pay">£0</b></div><div class="result-stat"><span>Tax-free allowance</span><b id="allowance">£0</b></div><div class="result-stat"><span>Tax year</span><b>2026/27</b></div></div>
+      <table class="result-table"><caption class="result-eyebrow" style="text-align:left;margin:18px 0 3px">Pay breakdown</caption><tbody id="breakdown-body"></tbody></table>
+      <div class="result-eyebrow" style="margin-top:24px">Income Tax bands used</div><ul class="tax-band-list" id="tax-bands"></ul>
+      <div class="warning-panel" id="warning-panel" hidden><strong>Important assumptions</strong><ul id="result-warnings"></ul></div>
+    </div>
+  </section>
+
+  <div class="notice"><strong>This is a planning estimate, not payroll software.</strong> It models one PAYE employment for the full 2026/27 tax year. A real payslip can differ because of cumulative pay, payroll rounding, code changes, benefits, statutory pay or employer-specific pension rules.</div>
+
+  <section class="payday-panel card" id="payday-panel" hidden><span class="badge">Bonus month</span><h2 id="payday-title">Payday comparison</h2><p class="note">The bonus is placed in one payday so you can see the period-based National Insurance and loan deductions.</p><div class="tablewrap"><table class="payday-table"><thead><tr><th scope="col">Breakdown</th><th scope="col">Regular payday</th><th scope="col">Bonus payday</th></tr></thead><tbody id="payday-body"></tbody></table></div></section>
+
+  <section class="below-grid">
+    <div class="card"><span class="badge">What is included</span><h2>A fuller PAYE estimate</h2><p>Use a Scottish tax code, one-off bonus, student and postgraduate loans, salary sacrifice, net pay or relief-at-source pension, and NI exemption where relevant.</p></div>
+    <div class="card"><span class="badge">What is not included</span><h2>Know the boundary</h2><p>It does not calculate self-employment, multiple jobs, dividends, savings, Child Benefit charges, benefits in kind, statutory pay, directors’ annual NI or scheme-specific pensionable earnings.</p></div>
+  </section>
+
+  <div class="content-grid">
+    <article class="salary-content">
+      <section id="how-it-works"><p class="eyebrow">Salary after tax, explained</p><h2>How this UK take-home pay calculator works</h2><p>Your take-home pay is the cash left from gross employment income after PAYE Income Tax, employee Class 1 National Insurance, pension deductions and any student or postgraduate loan repayment selected. The calculator first applies the rules for the <strong>2026/27 tax year</strong>, then shows the same annual result as monthly, weekly, daily and hourly figures.</p><p>Income Tax is normally cumulative across the tax year. National Insurance and student-loan deductions are calculated for each pay period, so bonus timing matters. That is why a one-off bonus appears in one payday rather than being silently spread across the year.</p></section>
+
+      <section id="tax-rates"><h2>UK Income Tax rates for 2026/27</h2><p>For England, Wales and Northern Ireland, the standard Personal Allowance is £12,570. It falls by £1 for every £2 of adjusted net income over £100,000 and reaches zero at £125,140.</p>
+        <div class="tablewrap"><table><caption class="fine">England, Wales and Northern Ireland — standard allowance</caption><thead><tr><th scope="col">Band</th><th scope="col">Income</th><th scope="col">Rate</th></tr></thead><tbody><tr><td>Personal Allowance</td><td>Up to £12,570</td><td>0%</td></tr><tr><td>Basic</td><td>£12,571–£50,270</td><td>20%</td></tr><tr><td>Higher</td><td>£50,271–£125,140</td><td>40%</td></tr><tr><td>Additional</td><td>Over £125,140</td><td>45%</td></tr></tbody></table></div>
+        <h3>Scottish Income Tax rates</h3><p>Scottish Income Tax applies to employment income when your main home is in Scotland. The 2026/27 starter and basic thresholds changed from the previous tax year.</p>
+        <div class="tablewrap"><table><caption class="fine">Scotland — standard allowance</caption><thead><tr><th scope="col">Band</th><th scope="col">Income</th><th scope="col">Rate</th></tr></thead><tbody><tr><td>Personal Allowance</td><td>Up to £12,570</td><td>0%</td></tr><tr><td>Starter</td><td>£12,571–£16,537</td><td>19%</td></tr><tr><td>Basic</td><td>£16,538–£29,526</td><td>20%</td></tr><tr><td>Intermediate</td><td>£29,527–£43,662</td><td>21%</td></tr><tr><td>Higher</td><td>£43,663–£75,000</td><td>42%</td></tr><tr><td>Advanced</td><td>£75,001–£125,140</td><td>45%</td></tr><tr><td>Top</td><td>Over £125,140</td><td>48%</td></tr></tbody></table></div>
+      </section>
+
+      <section id="national-insurance"><h2>Employee National Insurance in 2026/27</h2><p>For a standard category A employee, Class 1 National Insurance is normally 8% between the primary threshold and upper earnings limit, then 2% above it. Payroll uses pay-period thresholds: £1,048 and £4,189 for monthly pay, or £242 and £967 for weekly pay.</p><p>The calculator rounds NI for each payday before adding the annual total. Select “Do not deduct employee National Insurance” only when this genuinely applies, such as category C after State Pension age.</p></section>
+
+      <section id="tax-codes"><h2>How your tax code changes the estimate</h2><p>The number in a code such as <strong>1257L</strong> indicates roughly how much tax-free income the employment receives. An <strong>S</strong> prefix uses Scottish rates and a <strong>C</strong> prefix indicates Welsh rates. Codes such as BR, D0 and D1 tax all income from this job at one rate; 0T gives no allowance; NT means no tax; and a K code adds untaxed income or deductions to taxable pay.</p><p>Emergency codes ending W1, M1, X or NONCUM calculate tax from that pay period rather than cumulative year-to-date figures. This calculator recognises the suffix but labels its result as an annualised estimate.</p></section>
+
+      <section id="student-loans"><h2>Student-loan thresholds for 2026/27</h2><p>Employees repay 9% of pay above the threshold for Plans 1, 2, 4 or 5. A Postgraduate Loan is 6% above its threshold and can be deducted at the same time as an undergraduate plan.</p>
+        <div class="tablewrap"><table><thead><tr><th scope="col">Plan</th><th scope="col">Annual threshold</th><th scope="col">Rate above threshold</th></tr></thead><tbody><tr><td>Plan 1</td><td>£26,900</td><td>9%</td></tr><tr><td>Plan 2</td><td>£29,385</td><td>9%</td></tr><tr><td>Plan 4</td><td>£33,795</td><td>9%</td></tr><tr><td>Plan 5</td><td>£25,000</td><td>9%</td></tr><tr><td>Postgraduate Loan</td><td>£21,000</td><td>6%</td></tr></tbody></table></div>
+        <p>Repayments use the same gross-pay basis as employer Class 1 NI and are rounded down to the nearest whole pound for the pay period. A bonus can trigger a deduction even when annual income later ends below the yearly threshold; GOV.UK explains when a refund may be available.</p>
+      </section>
+
+      <section id="pensions-bonus"><h2>Pension contributions and bonus tax</h2><h3>Salary sacrifice</h3><p>You contractually give up cash salary and the employer pays the amount into the pension. For 2026/27, a valid pension salary sacrifice normally reduces Income Tax, employee NI and the pay used for student-loan deductions. It can affect statutory payments and benefits.</p><h3>Net pay arrangement</h3><p>The gross employee contribution is taken before Income Tax, but after National Insurance is worked out. The full contribution is deducted from cash pay.</p><h3>Relief at source</h3><p>The contribution comes from after-tax pay. The calculator treats your entry as the gross amount going into the pension: you pay 80% and the provider claims 20% basic-rate relief. Extra relief for higher Scottish or rest-of-UK rates may need to be claimed and is not added to the displayed payroll take-home pay.</p><h3>One-off bonus</h3><p>A cash bonus is employment income. Annual Income Tax usually settles according to total taxable pay, while NI and student loans are payday-based. The calculator assumes the selected pension contribution applies to salary and bonus; use a fixed annual pension amount if your bonus is not pensionable.</p></section>
+
+      <section id="sources"><h2>Official sources and calculation review</h2><div class="review-box"><p><strong>Tax year:</strong> 2026/27, from 6 April 2026 to 5 April 2027</p><p><strong>Rates checked:</strong> 29 July 2026</p><p><strong>Calculation tests:</strong> standard and tapered allowance boundaries, Scottish comparison, NI periods, all loan plans, bonus timing, tax codes and pension methods.</p></div>
+        <ul class="source-list">
+          <li><a href="https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2026-to-2027">HMRC: rates and thresholds for employers 2026 to 2027</a></li>
+          <li><a href="https://www.gov.uk/government/publications/rates-and-allowances-income-tax/income-tax-rates-and-allowances-current-and-past">HMRC: current and previous Income Tax rates and allowances</a></li>
+          <li><a href="https://www.gov.uk/scottish-income-tax">GOV.UK: Scottish Income Tax current rates</a></li>
+          <li><a href="https://www.gov.scot/publications/scottish-income-tax-technical-factsheet">Scottish Government: 2026/27 technical factsheet</a></li>
+          <li><a href="https://www.gov.uk/government/publications/sl3-student-loan-deduction-tables/2026-to-2027-student-and-postgraduate-loan-deduction-tables">HMRC: 2026/27 student and postgraduate loan tables</a></li>
+          <li><a href="https://www.gov.uk/tax-codes/what-your-tax-code-means">GOV.UK: what your tax code means</a></li>
+          <li><a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief">GOV.UK: pension tax relief</a></li>
+          <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye">HMRC: salary sacrifice and PAYE</a></li>
+        </ul>
+        <p>Read the full <a href="/methodology/#salary">Money Harbour salary-calculator methodology</a>. If your result matters for a tax return, dispute or payroll decision, compare it with your payslip and HMRC’s own service.</p>
+      </section>
+
+      <section class="faq" id="faq"><h2>UK salary calculator questions</h2>
+        <details><summary>How is UK take-home pay calculated?</summary><p>Gross employment pay is reduced by PAYE Income Tax, employee Class 1 National Insurance, pension deductions and any student or postgraduate loan deductions selected.</p></details>
+        <details><summary>Does this salary calculator include Scottish Income Tax?</summary><p>Yes. Select Scotland or enter an S-prefixed tax code. The calculator then uses the six Scottish non-savings, non-dividend bands for 2026/27.</p></details>
+        <details><summary>How is a bonus taxed in the UK?</summary><p>A cash bonus is employment income. It may increase Income Tax, NI and student-loan deductions. This calculator places it in one selected-frequency payday to expose period-based deductions.</p></details>
+        <details><summary>Does salary sacrifice reduce tax and National Insurance?</summary><p>A valid pension salary-sacrifice arrangement normally reduces the salary subject to Income Tax and employee NI in 2026/27. Net pay and relief at source have different effects.</p></details>
+        <details><summary>Why might my payslip differ from the calculator?</summary><p>Payroll rounding, cumulative year-to-date pay, code changes, emergency treatment, benefits, arrears, statutory pay, multiple jobs and pension-scheme rules can all cause differences.</p></details>
+        <details><summary>Can I use this if I am self-employed?</summary><p>No. It is designed for one employment paid through PAYE. Self-employed profits, Class 4 NI and payments on account require a Self Assessment calculation.</p></details>
+      </section>
+      <footer class="disclaimer">General information only—not tax, financial or legal advice. Money Harbour is independent and is not part of HMRC or the UK Government.</footer>
+    </article>
+    <aside class="on-page" aria-label="On this page"><h2>On this page</h2><a href="#calculator">Salary calculator</a><a href="#how-it-works">How it works</a><a href="#tax-rates">Income Tax rates</a><a href="#national-insurance">National Insurance</a><a href="#tax-codes">Tax codes</a><a href="#student-loans">Student loans</a><a href="#pensions-bonus">Pensions and bonus</a><a href="#sources">Official sources</a><a href="#faq">Questions</a></aside>
+  </div>
+</main>
+<footer class="site-footer" id="footer-nav"><div class="footer-inner"><div class="footer-about"><div class="footer-brand">Money <span>Harbour</span></div><p class="footer-intro">Independent UK calculators and practical tools. Clear assumptions, no account required.</p></div><div class="footer-col"><h2>Tools</h2><a href="/salary-calculator/">Salary calculator</a><a href="/remortgage/">Remortgage calculator</a><a href="/invoice-templates/">Invoice generator</a></div><div class="footer-col"><h2>Salary topics</h2><a href="/salary-calculator/#tax-rates">Income Tax rates</a><a href="/salary-calculator/#student-loans">Student loans</a><a href="/salary-calculator/#pensions-bonus">Pension and bonus</a></div><div class="footer-col"><h2>Money Harbour</h2><a href="/about/">About</a><a href="/methodology/">Methodology</a><a href="/how-we-make-money/">How we make money</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div></div><div class="footer-bottom"><span>© 2026 Money Harbour</span><span>General information only—not financial, tax or legal advice.</span></div></footer>
+<script type="module" src="/salary-calculator/app.js"></script>
+<script data-goatcounter="https://kevinli.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
