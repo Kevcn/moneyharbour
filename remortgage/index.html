@@ -16,7 +16,7 @@
   .tool-head{max-width:820px;padding:10px 0 16px}.tool-head .lead{max-width:740px}
   .calculator-shell{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,.85fr);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;background:var(--paper);box-shadow:var(--shadow-md);margin:20px 0 28px}
   .inputs-panel{padding:30px}.inputs-panel h2{font-family:var(--sans);font-size:15px;letter-spacing:0;margin:0 0 5px}.inputs-panel>p{color:var(--muted);font-size:13px;margin:0 0 20px}
-  .input-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px}
+  .input-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px}.wide{grid-column:1/-1}.inline-check{display:flex;align-items:flex-start;gap:9px;margin:8px 0}.inline-check input{width:auto;margin-top:4px}.inline-check label{margin:0;font-size:12px;color:var(--muted)}
   .field{position:relative}.field .unit{position:absolute;right:13px;bottom:12px;color:var(--muted);font-size:13px;font-weight:650;pointer-events:none}.field input{padding-right:58px}
   #calc{width:100%;margin-top:22px}
   .error{display:none;color:var(--danger);font-size:13px;margin:12px 0 0}.error.show{display:block}
@@ -39,9 +39,9 @@
 <header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="Money Harbour home"><img src="/assets/harbour-mark.svg" alt=""><span class="brand-name">Money <span>Harbour</span></span></a><nav class="site-nav" aria-label="Primary"><a href="/#tools">Tools</a><a href="/salary-calculator/">Salaries</a><a href="/mortgage/" aria-current="page">Mortgages</a><a href="/invoice-templates/">Invoicing</a><a href="/about/">About</a><a class="nav-cta" href="/#tools">Use a free tool</a></nav><a class="mobile-nav" href="#footer-nav">Menu</a></div></header>
 <main id="main" class="tool-wrap">
   <nav class="crumb"><a href="/">Money Harbour</a> › <a href="/mortgage/">Mortgages</a> › Remortgage calculator</nav>
-  <header class="tool-head"><p class="eyebrow">Free UK calculator</p><h1>What is staying on your current mortgage rate costing you?</h1><p class="lead">Compare the monthly repayment at your current rate with a rate you could switch to. Four numbers, an instant estimate and no account required.</p><div class="page-meta"><span>Repayment mortgages</span><span>Inputs stay in your browser</span><span>Method checked July 2026</span></div></header>
+  <header class="tool-head"><p class="eyebrow">Free UK calculator</p><h1>What is staying on your current mortgage rate costing you?</h1><p class="lead">Compare your current rate with a potential replacement, then include fees and cashback to see the true-cost saving and break-even point.</p><div class="page-meta"><span>Repayment mortgages</span><span>Inputs stay in your browser</span><span>Method checked July 2026</span></div></header>
 
-  <section class="calculator-shell" aria-label="Remortgage savings calculator">
+  <section class="calculator-shell" id="calculator" aria-label="Remortgage savings calculator">
     <div class="inputs-panel">
       <h2>Your mortgage</h2><p>Use your latest statement for the balance and remaining term.</p>
       <div class="input-grid">
@@ -49,6 +49,11 @@
         <div class="field"><label for="years">Remaining term</label><input type="number" id="years" placeholder="20" min="1" max="40" step="1" inputmode="decimal"><span class="unit">years</span></div>
         <div class="field"><label for="curRate">Your current rate</label><input type="number" id="curRate" placeholder="6.5" min="0.1" max="20" step="0.01" inputmode="decimal"><span class="unit">%</span></div>
         <div class="field"><label for="newRate">Potential new rate</label><input type="number" id="newRate" placeholder="4.5" min="0.1" max="20" step="0.01" inputmode="decimal"><span class="unit">%</span></div>
+        <div class="field"><label for="comparisonYears">Compare over</label><input type="number" id="comparisonYears" value="2" min="1" max="10" step="1" inputmode="decimal"><span class="unit">years</span></div>
+        <div class="field"><label for="productFee">New product fee</label><input type="number" id="productFee" value="999" min="0" step="1" inputmode="decimal"><span class="unit">£</span></div>
+        <div class="field"><label for="otherFees">Other switching costs</label><input type="number" id="otherFees" value="0" min="0" step="1" inputmode="decimal"><span class="unit">£</span></div>
+        <div class="field"><label for="cashback">Cashback</label><input type="number" id="cashback" value="0" min="0" step="1" inputmode="decimal"><span class="unit">£</span></div>
+        <div class="wide inline-check"><input type="checkbox" id="addFee"><label for="addFee">Add the product fee to the new mortgage rather than paying it upfront</label></div>
       </div>
       <button class="button" id="calc" type="button">Calculate my saving <span aria-hidden="true">→</span></button>
       <p class="error" id="calcError" role="alert">Enter a valid balance, term and both interest rates.</p>
@@ -59,8 +64,8 @@
       <div id="results">
         <div class="result-kicker" id="resultLabel">Estimated monthly saving</div><div class="big" id="monthly">£0/mo</div><div class="result-context" id="resultContext">before fees and other costs</div>
         <div class="payment-bars"><div class="payment-row"><span>Current</span><span class="bar-track"><span class="pay-bar" id="curBar"></span></span><b id="curPayBar">£0</b></div><div class="payment-row"><span>New</span><span class="bar-track"><span class="pay-bar new" id="newBar"></span></span><b id="newPayBar">£0</b></div></div>
-        <div class="stats"><div><div class="k">Over a 2-year fix</div><div class="v" id="twoYear">£0</div></div><div><div class="k">Over a 5-year fix</div><div class="v" id="fiveYear">£0</div></div><div><div class="k">Current payment</div><div class="v" id="curPay">£0</div></div><div><div class="k">New payment</div><div class="v" id="newPay">£0</div></div></div>
-        <p class="result-note">Estimate excludes product, legal, valuation and early-repayment fees. Compare the total saving with all switching costs.</p>
+        <div class="stats"><div><div class="k">Net saving in selected period</div><div class="v" id="twoYear">£0</div></div><div><div class="k">True-cost break-even</div><div class="v" id="fiveYear">—</div></div><div><div class="k">Current payment</div><div class="v" id="curPay">£0</div></div><div><div class="k">New payment</div><div class="v" id="newPay">£0</div></div></div>
+        <p class="result-note">True cost includes payments, fees, cashback and the balance remaining—not just the monthly-payment difference.</p>
       </div>
     </div>
   </section>
@@ -69,7 +74,7 @@
 
   <section class="explain-grid">
     <div class="card"><span class="badge">The calculation</span><h2>How the maths works</h2><p>We use the standard repayment-mortgage amortisation formula and compare the same outstanding balance and remaining term at both annual rates. <a href="/methodology/#remortgage">See the full method and assumptions</a>.</p></div>
-    <div class="card"><span class="badge">The decision</span><h2>Remember the break-even point</h2><p>A lower payment is only useful when the saving exceeds arrangement, legal, valuation and exit costs. <a href="/remortgage/fees/">Work out the fee break-even</a> before switching.</p></div>
+    <div class="card"><span class="badge">The decision</span><h2>Use the true break-even point</h2><p>The upgraded result compares fees, cashback, interest and the mortgage balance remaining each month. Add any early-repayment charge under other switching costs. <a href="/remortgage/fees/">Understand each remortgage fee</a>.</p></div>
   </section>
 
   <section class="card signup">
@@ -81,25 +86,7 @@
   <footer class="disclaimer">This tool is for general information only and is not financial advice. Consider advice from an FCA-authorised mortgage adviser before acting.</footer>
 </main>
 <footer class="site-footer" id="footer-nav"><div class="footer-inner"><div class="footer-about"><div class="footer-brand">Money <span>Harbour</span></div><p class="footer-intro">Independent UK calculators and practical tools. Clear assumptions, no account required.</p></div><div class="footer-col"><h2>Tools</h2><a href="/mortgage/">Mortgage calculator</a><a href="/salary-calculator/">Salary calculator</a><a href="/remortgage/">Remortgage calculator</a><a href="/invoice-templates/">Invoice generator</a><a href="/invoice-templates/word/">Word invoice template</a></div><div class="footer-col"><h2>Guides</h2><a href="/remortgage/should-i-remortgage/">Should I remortgage?</a><a href="/remortgage/fees/">Remortgage fees</a><a href="/remortgage/svr-rates/">UK SVR rates</a></div><div class="footer-col"><h2>Money Harbour</h2><a href="/about/">About</a><a href="/methodology/">Methodology</a><a href="/how-we-make-money/">How we make money</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div></div><div class="footer-bottom"><span>© 2026 Money Harbour</span><span>General information only—not financial, tax or legal advice.</span></div></footer>
-<script>
-  function gbp(n){return "£"+Math.abs(Math.round(n)).toLocaleString("en-GB")}
-  function pay(P,annualPct,years){const r=annualPct/100/12,n=years*12;if(r===0)return P/n;return P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1)}
-  document.getElementById("calc").addEventListener("click",()=>{
-    const P=+document.getElementById("balance").value,y=+document.getElementById("years").value,c=+document.getElementById("curRate").value,nw=+document.getElementById("newRate").value,error=document.getElementById("calcError");
-    if(!P||!y||!c||!nw||P<1000||y<1){error.classList.add("show");return}error.classList.remove("show");
-    const cur=pay(P,c,y),neu=pay(P,nw,y),d=cur-neu,saving=d>=0,max=Math.max(cur,neu);
-    document.getElementById("resultLabel").textContent=saving?"Estimated monthly saving":"Estimated additional monthly cost";
-    document.getElementById("monthly").textContent=gbp(d)+"/mo";
-    document.getElementById("resultContext").textContent=saving?"before fees and other costs":"at the potential new rate";
-    document.getElementById("twoYear").textContent=(saving?"":"−")+gbp(d*24);document.getElementById("fiveYear").textContent=(saving?"":"−")+gbp(d*60);
-    document.getElementById("curPay").textContent=gbp(cur);document.getElementById("newPay").textContent=gbp(neu);document.getElementById("curPayBar").textContent=gbp(cur);document.getElementById("newPayBar").textContent=gbp(neu);
-    document.getElementById("curBar").style.width=(cur/max*100)+"%";document.getElementById("newBar").style.width=(neu/max*100)+"%";
-    document.getElementById("rateField").value=c+"%";document.getElementById("emptyResult").style.display="none";document.getElementById("results").classList.add("show");
-    if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:"calc-remortgage",title:"Remortgage calculation",event:true});
-  });
-  document.querySelectorAll('.inputs-panel input').forEach(input=>input.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('calc').click()}));
-  const form=document.getElementById("alertForm"),dest=["liyq1122","gmail.com"].join("@");form.addEventListener("submit",async e=>{e.preventDefault();const data=new FormData(form);try{await fetch("https://formsubmit.co/ajax/"+dest,{method:"POST",headers:{"Accept":"application/json"},body:data});document.getElementById("okMsg").style.display="block";form.querySelector("input[type=email]").value=""}catch(err){document.getElementById("okMsg").textContent="Something went wrong—please try again.";document.getElementById("okMsg").style.display="block"}});
-</script>
+<script type="module" src="/remortgage/app.js"></script>
 <script data-goatcounter="https://kevinli.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
